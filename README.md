@@ -1,3 +1,4 @@
+#🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸
 # This is America 🇺🇸
 
 ## Introduction
@@ -9,3 +10,5 @@
 
 
 > © Desarrollado por OTAN Games. 2019-2019
+
+🇻🇪 🇻🇪 🇻🇪 🇻🇪 🇻🇪 🇻🇪 🇻🇪 🇻🇪 🇻🇪 🇻🇪 🇻🇪 🇻🇪
