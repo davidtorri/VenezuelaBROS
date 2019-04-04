@@ -10,8 +10,8 @@
 #include "Player.h"
 #include "Juego.h"
 #include "Camara.h"
-
-class Juego 
+//version con cd
+class Juego
 {
 	public:
 	~Juego(void);
@@ -19,9 +19,9 @@ class Juego
     {
         if(unica_instancia == 0)
         unica_instancia = new Juego();
-        return unica_instancia;  
+        return unica_instancia;
     }
-    
+
     static void ResetInstance()
     {
         delete unica_instancia;
@@ -46,8 +46,8 @@ class Juego
     sf::View view1;
     sf::View view2;
 
-   
- 
+
+
 
     private:
     Juego();
@@ -61,4 +61,4 @@ class Juego
 
 };
 
-#endif 
+#endif
