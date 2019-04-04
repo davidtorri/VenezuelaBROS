@@ -13,16 +13,16 @@ Juego::Juego(){
 
 Juego::~Juego()
 {
-    
+
 }
 void Juego::cargarCamara(){
 
     view1.reset(sf::FloatRect(200.f, 200.f, 300.f, 200.f));
 
-    
+
     view2.setCenter(sf::Vector2f(350.f, 120.f));
     view2.setSize(sf::Vector2f(600.f, 300.f));
-	
+
   //camara = new Camara();
 }
 
@@ -44,22 +44,25 @@ void Juego::crearVentana(){
 }
 void Juego::bucleJuego(){
 
-	std::vector<Bullet> bulletVec;    
+
+
+	std::vector<Bullet> bulletVec;
     bool isFiring=false;
+    bool derecha = true;
 
 	while (window.isOpen())
     {
     	cout << "PlayerX"<< player->getX() << endl;
         //window.setView(camara->returnview());
         window.setView(view2);
-        
+
         sf::Event event;
-        
+
         while (window.pollEvent(event))
         {
-            
+
             switch(event.type){
-                
+
                 //Si se recibe el evento de cerrar la ventana la cierro
                 case sf::Event::Closed:
                     window.close();
@@ -67,13 +70,12 @@ void Juego::bucleJuego(){
                 case sf::Event::KeyPressed:
                     switch(event.key.code){
                         case sf::Keyboard::Escape:
-                        case sf::Keyboard::Q:
                             window.close();
                             break;
                     }
                     break;
             }
-            
+
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
                 player->move(sf::Vector2f(0, -kVel));
             }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
@@ -87,6 +89,8 @@ void Juego::bucleJuego(){
                 	right -= 7;
                 	left -= 7;
             	}
+            	if(derecha)
+                    derecha = false;
             }else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
                 player->move(sf::Vector2f(kVel, 0));
 
@@ -96,36 +100,41 @@ void Juego::bucleJuego(){
                 left += 7;
                 right += 7;
             	}
+            	if(!derecha)
+                    derecha = true;
             }
-            
+
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
                 isFiring = true;
             }
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
+                player->Muro(derecha);
+            }
         }
-        
-        
+
+
         window.clear();
-        
+
         //window.draw(backgroundSprite);
         map1->draw(window);
-        
+
         if(isFiring == true){
             Bullet newBullet(sf::Vector2f(50, 5));
             newBullet.setPos(sf::Vector2f(player->getX(), player->getY()));
             bulletVec.push_back(newBullet);
             isFiring = false;
         }
-        
+
         for(int i = 0; i < bulletVec.size(); i++){
             bulletVec[i].draw(window);
             bulletVec[i].fire(10);
             enemy->checkColl(bulletVec[i]);
         }
-        
-        
+
+
         player->draw(window);
         enemy->draw(window);
-        
+
         window.display();
     }
 }
