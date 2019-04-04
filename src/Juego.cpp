@@ -44,7 +44,7 @@ void Juego::crearVentana(){
 }
 void Juego::bucleJuego(){
 
-
+    sf::Clock cd;
 
 	std::vector<Bullet> bulletVec;
     bool isFiring=false;
@@ -109,7 +109,13 @@ void Juego::bucleJuego(){
             }
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
                 player->Muro(derecha);
+                cd.restart();
             }
+        }
+
+
+        if(cd.getElapsedTime().asSeconds()>3){
+            player->ReseteaMuro();
         }
 
 
