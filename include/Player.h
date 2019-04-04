@@ -2,6 +2,7 @@
 #define PLAYER_HPP
 
 #include <iostream>
+#include <stdlib.h>
 #include <SFML/Graphics.hpp>
 
 #include "Bullet.h"
@@ -30,6 +31,9 @@ public:
     void Muro(bool derecha);
 
     void ReseteaMuro();
+
+    void anyadePetroleo();
+
 private:
    // sf::RectangleShape player;
     sf::Texture *Tplayer=NULL;
@@ -38,7 +42,20 @@ private:
     sf::Texture *Tmuro=NULL;
     sf::Sprite *sprite_muro;
 
+    sf::Texture *Totan=NULL;
+    sf::Sprite *sprite_otan;
+
+    sf::Texture *Tbomba=NULL;
+    sf::Sprite *sprite_bomba;
+
+    std::vector<sf::Sprite> bombas;
+
+    int petroleo;
     bool muroPuesto;
+    bool otandisponible;
+    bool llamada;
+
+    void moveOtan(sf::Vector2f dir);
 
 };
 

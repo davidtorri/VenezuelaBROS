@@ -111,6 +111,9 @@ void Juego::bucleJuego(){
                 player->Muro(derecha);
                 cd.restart();
             }
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
+                player->OTAN();
+            }
         }
 
 
