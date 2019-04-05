@@ -2,7 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include "Bullet.h"
 
+#define kDmg 10
+
 Bullet::Bullet(sf::Vector2f size){
+
     sprite_bullet.setSize(size);
     sprite_bullet.setFillColor(sf::Color::White);
 
@@ -17,7 +20,7 @@ Bullet::Bullet(sf::Vector2f size){
 //sprite_bullet->setTextureRect(sf::IntRect(1950, 1580, 95, 40));
 //sprite_bullet->setScale(1,1);
 // Lo dispongo en el centro de la pantalla
-//sprite_bullet->setPosition(323, 160); 
+//sprite_bullet->setPosition(323, 160);
 }
 //Bullet::Bullet(sf::Vector2f size) {
   //  sprite_bullet->setSize(size);
@@ -45,6 +48,10 @@ int Bullet::getTop(){
 
 int Bullet::getBottom(){
     return sprite_bullet.getPosition().y + sprite_bullet.getSize().y;
+}
+
+int Bullet::getDmg(){
+    return kDmg;
 }
 
 void Bullet::draw(sf::RenderWindow &window){

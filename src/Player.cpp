@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
 
-#define kVida 100
+#define kVida 11100
 
 Player::Player(sf::Vector2f size) {
   //  sprite_player->setSize(size);
@@ -193,6 +193,16 @@ int Player::getPetroleo(){
         mas = mas +50;
     }
  }
+
+void Player::checkColl(Bullet bullet){
+
+        if(bullet.getRight() > sprite_player->getPosition().x &&
+           bullet.getTop() < sprite_player->getPosition().y ){
+            vida = vida - bullet.getDmg();
+            //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
+
+        }
+}
 
  void Player::draw(sf::RenderWindow& window){
 

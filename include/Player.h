@@ -46,6 +46,8 @@ public:
 
     void CreaSpriteBomba();
 
+    void checkColl(Bullet bullet);
+
 private:
    // sf::RectangleShape player;
     sf::Texture *Tplayer=NULL;

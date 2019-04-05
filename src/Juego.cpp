@@ -47,12 +47,16 @@ void Juego::bucleJuego(){
     sf::Clock cd;
 
 	std::vector<Bullet> bulletVec;
+	std::vector<Bullet> bulletVecEnemy;
     bool isFiring=false;
     bool derecha = true;
 
 	while (window.isOpen())
     {
     	cout << "PlayerX"<< player->getX() << endl;
+    	cout << "PlayerY"<< player->getY() << endl;
+    	cout << "Player Vida"<<player->getVida() <<endl;
+    	cout << "Enemy Vida"<< enemy->getVida() <<endl;
         //window.setView(camara->returnview());
         window.setView(view2);
 
@@ -132,12 +136,26 @@ void Juego::bucleJuego(){
             newBullet.setPos(sf::Vector2f(player->getX(), player->getY()));
             bulletVec.push_back(newBullet);
             isFiring = false;
+
+            Bullet newBullet2(sf::Vector2f(5,5));
+            newBullet2.setPos(sf::Vector2f(enemy->getX(), enemy->getY()));
+            bulletVecEnemy.push_back(newBullet2);
         }
 
-        for(int i = 0; i < bulletVec.size(); i++){
-            bulletVec[i].draw(window);
-            bulletVec[i].fire(10);
-            enemy->checkColl(bulletVec[i]);
+        if(enemy->getVida() > 0){
+            for(int i = 0; i < bulletVec.size(); i++){
+                bulletVec[i].draw(window);
+                bulletVec[i].fire(10);
+                enemy->checkColl(bulletVec[i]);
+            }
+        }
+
+        if(player->getVida() > 0){
+            for(int i = 0;i < bulletVecEnemy.size(); i++){
+                bulletVecEnemy[i].draw(window);
+                bulletVecEnemy[i].fire(-5);
+                player->checkColl(bulletVecEnemy[i]);
+            }
         }
 
 
