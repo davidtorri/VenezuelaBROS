@@ -36,7 +36,9 @@ public:
 
     void ReseteaMuro();
 
-    void ResetaPosOtan();
+    void ResetPosOtan();
+
+    void ResetPosBombas();
 
     void setPetroleo();
 

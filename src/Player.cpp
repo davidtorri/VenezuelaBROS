@@ -107,7 +107,8 @@ int Player::getPetroleo(){
         petroleo = petroleo - 5;
     }
     else if(otandisponible){
-        ResetaPosOtan();
+        ResetPosOtan();
+        ResetPosBombas();
         llamada = true;
         petroleo = petroleo - 5;
     }
@@ -147,8 +148,18 @@ int Player::getPetroleo(){
         muroPuesto = false;
  }
 
- void Player::ResetaPosOtan(){
+ void Player::ResetPosOtan(){
     sprite_otan->setPosition(-100,0);
+ }
+
+ void Player::ResetPosBombas(){
+    for(int q  = 0; q<10;q++){
+        int mas = 0;
+
+        bombas[q].setPosition(sprite_otan->getPosition().x+mas,sprite_otan->getPosition().y+40);
+
+        mas = mas +50;
+    }
  }
 
  void Player::CreaSpriteOtan(){
