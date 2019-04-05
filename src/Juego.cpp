@@ -37,7 +37,7 @@ void Juego::cargarPlayer(){
 	player = new Player(sf::Vector2f(50,50));
 }
 void Juego::cargarMapa(){
-	map1 = new Tilemap("resources/mapaunacapa.tmx");
+	map1 = new Tilemap("resources/mapaunacapa22.tmx");
    // map1->load("resources/mapaunacapa.tmx");
 }
 void Juego::crearVentana(){
