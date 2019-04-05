@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "Juego.h"
 #include "Camara.h"
+#include "Civil.h"
 //version con cd
 class Juego
 {
@@ -34,6 +35,7 @@ class Juego
     void cargarCamara();
     void cargarPlayer();
     void cargarEnemy();
+    void cargarCivil();
     void cargarMapa();
 
     void bucleJuego();
@@ -55,6 +57,7 @@ class Juego
 
     Player* player;
     Enemy* enemy;
+    Civil* civil;
     Tilemap* map1;
     //Camara* camara;
 

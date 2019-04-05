@@ -35,7 +35,8 @@ void Bullet::fire(int speed){
 }
 
 int Bullet::getRight(){
-    return sprite_bullet.getPosition().x + sprite_bullet.getSize().x;
+    //return sprite_bullet.getPosition().x + sprite_bullet.getSize().x;
+    return sprite_bullet.getPosition().x;
 }
 
 int Bullet::getLeft(){

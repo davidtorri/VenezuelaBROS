@@ -13,6 +13,7 @@ int main()
     juego->cargarMapa();
     juego->cargarPlayer();
     juego->cargarEnemy();
+    juego->cargarCivil();
     juego->cargarCamara();
     juego->bucleJuego();
 

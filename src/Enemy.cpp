@@ -12,7 +12,7 @@ Enemy::Enemy(sf::Vector2f size) {
 
     Tenemy->loadFromFile("resources/sprites.png");
     sprite_enemy= new sf::Sprite(*Tenemy);
-    sprite_enemy2= new sf::Sprite(*Tenemy);
+
 
     //Le pongo el centroide donde corresponde
     sprite_enemy->setOrigin(75/2,75/2);
@@ -55,6 +55,8 @@ void Enemy::setPos(sf::Vector2f newPos){
     }
 
 void Enemy::checkColl(Bullet bullet){
+
+
 
         if(bullet.getRight() > sprite_enemy->getPosition().x &&
            bullet.getTop() < sprite_enemy->getPosition().y ){

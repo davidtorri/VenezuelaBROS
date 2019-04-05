@@ -29,7 +29,7 @@ private:
     //sf::RectangleShape enemy;
     sf::Texture *Tenemy=NULL;
     sf::Sprite *sprite_enemy;
-    sf::Sprite *sprite_enemy2;
+
 
     int vida;
 };

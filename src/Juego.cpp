@@ -30,6 +30,9 @@ void Juego::cargarEnemy(){
 	enemy = new Enemy(sf::Vector2f(50,50));
 	enemy->setPos(sf::Vector2f(400, 146));
 }
+void Juego::cargarCivil(){
+    civil = new Civil(sf::Vector2f(50,50));
+}
 void Juego::cargarPlayer(){
 	player = new Player(sf::Vector2f(50,50));
 }
@@ -38,7 +41,7 @@ void Juego::cargarMapa(){
    // map1->load("resources/mapaunacapa.tmx");
 }
 void Juego::crearVentana(){
-	window.create(sf::VideoMode(800, 480), "Venezuela BROS");
+	window.create(sf::VideoMode(800, 480), "This is America v.1.0");
     window.setKeyRepeatEnabled(true);
     cout << "VENTANA" << endl;
 }
@@ -161,6 +164,7 @@ void Juego::bucleJuego(){
 
         player->draw(window);
         enemy->draw(window);
+        civil->draw(window);
 
         window.display();
     }
