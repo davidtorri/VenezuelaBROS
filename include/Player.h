@@ -20,6 +20,10 @@ public:
 
     int getY();
 
+    int getVida();
+
+    int getPetroleo();
+
     void draw(sf::RenderWindow &window);
 
     //En esta funcion de hace una llamada a la Ulti, la cual en cuanto llegue a la posicion actualdel personaje
@@ -32,7 +36,13 @@ public:
 
     void ReseteaMuro();
 
-    void anyadePetroleo();
+    void ResetaPosOtan();
+
+    void setPetroleo();
+
+    void CreaSpriteOtan();
+
+    void CreaSpriteBomba();
 
 private:
    // sf::RectangleShape player;
@@ -51,11 +61,13 @@ private:
     std::vector<sf::Sprite> bombas;
 
     int petroleo;
+    int vida;
     bool muroPuesto;
     bool otandisponible;
     bool llamada;
 
     void moveOtan(sf::Vector2f dir);
+    void moveBomba();
 
 };
 

@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
 
+#define kVida 100
+
 Player::Player(sf::Vector2f size) {
   //  sprite_player->setSize(size);
     //sprite_player->setFillColor(sf::Color::Green);
@@ -12,6 +14,7 @@ Player::Player(sf::Vector2f size) {
     otandisponible = true;
     llamada = false;
     petroleo = 0;
+    vida = kVida;
 
     Tplayer = new sf::Texture();
 
@@ -52,6 +55,14 @@ Player::~Player() {
     delete[] sprite_bomba;
 }
 
+int Player::getVida(){
+    return vida;
+}
+
+int Player::getPetroleo(){
+    return petroleo;
+}
+
  int Player::getX(){
      return sprite_player->getPosition().x;
  }
@@ -72,50 +83,45 @@ Player::~Player() {
     }
  }
 
+ void Player::moveBomba(){
+    //variable auxiliar para actualizar posicion X de cada bomba, asi no se tiraran todas en el mismo lugar
+    int actu = -50;
+
+    //Actualizo la posicion X de la bomba con respecto al avio
+    //y la Y con respecto a la posicion anterior de la propia bomba
+    for(int p  = 0; p<10;p++){
+        bombas[p].setPosition(sprite_otan->getPosition().x+actu,bombas[p].getPosition().y+1.5);
+
+        actu = actu+75;
+    }
+ }
+
  void Player::OTAN(){
     if(otandisponible && Totan==NULL)
     {
-        Totan = new sf::Texture();
-        Totan->loadFromFile("resources/plane.png");
-        sprite_otan = new sf::Sprite(*Totan);
-        sprite_otan->setOrigin(75/2,75/2);
-        sprite_otan->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
-        sprite_otan->setScale(1.5,1.5);
-        sprite_otan->setPosition(-50,0);
+        CreaSpriteOtan();
 
-        Tbomba = new sf::Texture();
-        Tbomba->loadFromFile("resources/bomb.png");
-        sprite_bomba = new sf::Sprite(*Tbomba);
-        sprite_bomba->setOrigin(75/2,75/2);
-        sprite_bomba->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
-        sprite_bomba->setScale(0.25,0.25);
-
-
-        for(int i  = 0; i<10;i++)
-        {
-            bombas.push_back(*sprite_bomba);
-        }
-
-        for(int q  = 0; q<10;q++){
-            int mas = 0;
-
-            bombas[q].setPosition(sprite_otan->getPosition().x+mas,sprite_otan->getPosition().y+50);
-
-            mas = mas +50;
-        }
+        CreaSpriteBomba();
 
         llamada = true;
         petroleo = petroleo - 5;
     }
     else if(otandisponible){
+        ResetaPosOtan();
         llamada = true;
         petroleo = petroleo - 5;
     }
 
  }
 
- void Player::anyadePetroleo(){
+//implementacio no definitiva hay que tener en cuenta cuando y como vamos a llamar a este metodo
+ void Player::setPetroleo(){
     petroleo++;
+
+    if(vida < kVida){
+        vida = vida + 10;
+    }
+
     if(petroleo>=5)
     {
         otandisponible = true;
@@ -141,6 +147,42 @@ Player::~Player() {
         muroPuesto = false;
  }
 
+ void Player::ResetaPosOtan(){
+    sprite_otan->setPosition(-100,0);
+ }
+
+ void Player::CreaSpriteOtan(){
+    Totan = new sf::Texture();
+    Totan->loadFromFile("resources/plane.png");
+    sprite_otan = new sf::Sprite(*Totan);
+    sprite_otan->setOrigin(75/2,75/2);
+    sprite_otan->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
+    sprite_otan->setScale(1.5,1.5);
+    sprite_otan->setPosition(-100,0);
+ }
+
+ void Player::CreaSpriteBomba(){
+    Tbomba = new sf::Texture();
+    Tbomba->loadFromFile("resources/bomb.png");
+    sprite_bomba = new sf::Sprite(*Tbomba);
+    sprite_bomba->setOrigin(75/2,75/2);
+    sprite_bomba->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
+    sprite_bomba->setScale(1,1);
+
+    for(int i  = 0; i<10;i++)
+        {
+            bombas.push_back(*sprite_bomba);
+        }
+
+    for(int q  = 0; q<10;q++){
+        int mas = 0;
+
+        bombas[q].setPosition(sprite_otan->getPosition().x+mas,sprite_otan->getPosition().y+40);
+
+        mas = mas +50;
+    }
+ }
+
  void Player::draw(sf::RenderWindow& window){
 
      window.draw(*sprite_player);
@@ -153,20 +195,11 @@ Player::~Player() {
 
         window.draw(*sprite_otan);
 
+        moveBomba();
+
+        //dibujo bombas
         for(int w  = 0; w<10;w++){
             window.draw(bombas[w]);
-        }
-        //variable auxiliar para actualizar posicion X de cada bomba, asi no se tiraran todas en el mismo lugar
-        int actu = -50;
-
-        //Actualizo la posicion X de la bomba con respecto al avio
-        //y la Y con respecto a la posicion anterior de la propia bomba
-        for(int p  = 0; p<10;p++)
-        {
-
-            bombas[p].setPosition(sprite_otan->getPosition().x+actu,bombas[p].getPosition().y+2.5);
-
-            actu = actu+50;
         }
      }
 
