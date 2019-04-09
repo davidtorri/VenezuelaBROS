@@ -16,6 +16,8 @@ public:
 
     void move(sf::Vector2f dir);
 
+    void CalcularSprite();
+
     int getX();
 
     int getY();
@@ -63,6 +65,11 @@ private:
     sf::Vector2f pos_anteriorOTAN;
     sf::Vector2f pos_nuevaOTAN;
 
+    sf::IntRect SpriteRight[6];
+    sf::IntRect SpriteLeft[6];
+    sf::IntRect SpriteDefault;
+
+
     bool interpolando = false;
 
    // sf::RectangleShape player;
@@ -83,6 +90,7 @@ private:
 
     int petroleo;
     int vida;
+    int velocidad;
     bool muroPuesto;
     bool otandisponible;
     bool llamada;
