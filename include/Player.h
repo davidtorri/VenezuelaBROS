@@ -34,6 +34,8 @@ public:
     //y se dibujara un sprite del muro en dicho lugar
     void Muro(bool derecha);
 
+    void dispara(bool derecha);
+
     void ReseteaMuro();
 
     void ResetPosOtan();
@@ -41,6 +43,8 @@ public:
     void ResetPosBombas();
 
     void setPetroleo();
+
+    void resetBala();
 
     void CreaSpriteOtan();
 
@@ -74,6 +78,7 @@ private:
     sf::Texture *Tbomba=NULL;
     sf::Sprite *sprite_bomba;
 
+    Bullet *bala;
     std::vector<sf::Sprite> bombas;
 
     int petroleo;
@@ -81,6 +86,8 @@ private:
     bool muroPuesto;
     bool otandisponible;
     bool llamada;
+    bool disparado;
+    bool disparoDerecha;
 
     void moveOtan(sf::Vector2f dir);
     void moveBomba();

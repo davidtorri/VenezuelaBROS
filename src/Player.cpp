@@ -13,6 +13,7 @@ Player::Player(sf::Vector2f size) {
     //actualmente esta a TRUE simplemente para probar el funcionamiento pero debera estas a false
     otandisponible = true;
     llamada = false;
+    disparado = false;
     petroleo = 0;
     vida = kVida;
 
@@ -21,7 +22,7 @@ Player::Player(sf::Vector2f size) {
     Tmuro = new sf::Texture();
 
 
-    Tplayer->loadFromFile("resources/sprites.png");
+    Tplayer->loadFromFile("resources/trump.png");
     sprite_player= new sf::Sprite(*Tplayer);
 
     Tmuro->loadFromFile("resources/PixelAtlas.png");
@@ -40,12 +41,11 @@ Player::Player(sf::Vector2f size) {
     sprite_muro->setScale(0.25,0.75);
 
     // Lo dispongo en el centro de la pantalla
-    sprite_player->setPosition(323, 146);
+    sprite_player->setPosition(200, 160);
 
     //Declaramos las posiciones
-     pos_anterior = sf::Vector2f(323,146);
-     pos_nueva = sf::Vector2f(323,146);
-
+     pos_anterior = sf::Vector2f(200,160);
+     pos_nueva = sf::Vector2f(200,160);
 }
 
 
@@ -90,12 +90,10 @@ int Player::getPetroleo(){
  void Player::moveBomba(){
     //variable auxiliar para actualizar posicion X de cada bomba, asi no se tiraran todas en el mismo lugar
     int actu = -50;
-
     //Actualizo la posicion X de la bomba con respecto al avio
     //y la Y con respecto a la posicion anterior de la propia bomba
     for(int p  = 0; p<10;p++){
         bombas[p].setPosition(sprite_otan->getPosition().x+actu,bombas[p].getPosition().y+1.5);
-
         actu = actu+75;
     }
  }
@@ -118,6 +116,16 @@ int Player::getPetroleo(){
     }
 
  }
+
+void Player::dispara(bool derecha){
+    if(!disparado)
+    {
+        bala = new Bullet(sf::Vector2f(50,50),0);
+        bala->setPos(sprite_player->getPosition());
+        disparado = true;
+        disparoDerecha = derecha;
+    }
+}
 
 //implementacio no definitiva hay que tener en cuenta cuando y como vamos a llamar a este metodo
  void Player::setPetroleo(){
@@ -204,8 +212,12 @@ void Player::checkColl(Bullet bullet){
            bullet.getTop() < sprite_player->getPosition().y ){
             vida = vida - bullet.getDmg();
             //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
-
         }
+}
+
+void Player::resetBala(){
+    disparado = false;
+
 }
 
  void Player::draw(sf::RenderWindow& window, float porcentaje_interpolacion){
@@ -223,6 +235,14 @@ void Player::checkColl(Bullet bullet){
 
      if(muroPuesto)
         window.draw(*sprite_muro);
+
+    if(disparado){
+        bala->draw(window);
+        if(disparoDerecha)
+            bala->fire(7);
+        else
+            bala->fire(-7);
+    }
 
      if(llamada) {
         moveOtan(sf::Vector2f(5, 0));

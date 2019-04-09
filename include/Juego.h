@@ -79,6 +79,8 @@ class Juego
         //  Relojes
         //============================
         sf::Clock cd;           // Cooldown del muro
+        sf::Clock cd2;          // Cooldown de la bala
+        sf::Clock cd3;          // Cooldown de la bala del enemigo
         sf::Clock render_time;  // Reloj que controla la velocidad del render (default 120fps)
         sf::Clock update_time;  // Reloj que controla la velocidad del update (default 15 fps)
 

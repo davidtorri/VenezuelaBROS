@@ -2,31 +2,39 @@
 #include <SFML/Graphics.hpp>
 #include "Bullet.h"
 
-#define kDmg 10
+Bullet::Bullet(sf::Vector2f size,int tipo){
 
-Bullet::Bullet(sf::Vector2f size){
-/*
-    sprite_bullet.setSize(size);
-    sprite_bullet.setFillColor(sf::Color::White);
-*/
+    Tbullet= new sf::Texture();
 
-Tbullet= new sf::Texture();
-Tbullet->loadFromFile("resources/plane.png");
-sprite_bullet= new sf::Sprite(*Tbullet);
+    //Es una bala del player
+    if(tipo == 0){
 
+        Tbullet->loadFromFile("resources/eeuu.png");
+        sprite_bullet= new sf::Sprite(*Tbullet);
+        //Le pongo el centroide donde corresponde
+        sprite_bullet->setOrigin(130/2,40/2);
+        //Cojo el sprite que me interesa por defecto del sheet
+        //sprite_bullet->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
+        sprite_bullet->setScale(0.020,0.020);
+        // Lo dispongo en el centro de la pantalla
+        sprite_bullet->setPosition(323, 160);
+        dmg =  10;
+    }
+    //Es una bala del enemigo
+    else{
+        Tbullet->loadFromFile("resources/plane.png");
+        sprite_bullet= new sf::Sprite(*Tbullet);
+        //Le pongo el centroide donde corresponde
+        sprite_bullet->setOrigin(130/2,40/2);
+        //Cojo el sprite que me interesa por defecto del sheet
+        sprite_bullet->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
+        sprite_bullet->setScale(1,1);
+        // Lo dispongo en el centro de la pantalla
+        sprite_bullet->setPosition(323, 160);
+        dmg = 5;
+    }
 
-
-//Le pongo el centroide donde corresponde
- sprite_bullet->setOrigin(130/2,40/2);
-//Cojo el sprite que me interesa por defecto del sheet
-sprite_bullet->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
-sprite_bullet->setScale(1,1);
-// Lo dispongo en el centro de la pantalla
-sprite_bullet->setPosition(323, 160);
 }
-//Bullet::Bullet(sf::Vector2f size) {
-  //  sprite_bullet->setSize(size);
-//}
 
 Bullet::~Bullet() {
     //delete[] sprite_bullet;
@@ -54,7 +62,7 @@ int Bullet::getBottom(){
 }
 
 int Bullet::getDmg(){
-    return kDmg;
+    return dmg;
 }
 
 void Bullet::draw(sf::RenderWindow &window){

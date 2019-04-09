@@ -8,6 +8,8 @@ Enemy::Enemy(sf::Vector2f size) {
 
     vida = kVida;
 
+    disparado = false;
+
     Tenemy= new sf::Texture();
 
     Tenemy->loadFromFile("resources/sprites.png");
@@ -52,7 +54,20 @@ int Enemy::getY(){
 
 void Enemy::setPos(sf::Vector2f newPos){
         sprite_enemy->setPosition(newPos);
+}
+
+void Enemy::resetBala(){
+    disparado = false;
+}
+
+void Enemy::dispara(){
+    if(!disparado)
+    {
+        bala = new Bullet(sf::Vector2f(50,50),1);
+        bala->setPos(sprite_enemy->getPosition());
+        disparado = true;
     }
+}
 
 void Enemy::checkColl(Bullet bullet){
 
@@ -69,4 +84,9 @@ void Enemy::checkColl(Bullet bullet){
 void Enemy::draw(sf::RenderWindow &window){
     if(vida > 0)
         window.draw(*sprite_enemy);
+
+    if(disparado){
+        bala->draw(window);
+        bala->fire(-8);
+    }
 }

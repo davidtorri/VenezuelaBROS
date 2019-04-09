@@ -25,13 +25,20 @@ public:
 
     int getVida();
 
+    void resetBala();
+
+    void dispara();
+
 private:
     //sf::RectangleShape enemy;
     sf::Texture *Tenemy=NULL;
     sf::Sprite *sprite_enemy;
 
+    Bullet *bala;
 
     int vida;
+    bool disparado;
+
 };
 
 #endif /* ENEMY_HPP */

@@ -1,6 +1,6 @@
 #include "Juego.h"
 
-#define kVel 4
+#define kVel 7
 #define UPDATE_TIME 1.0f/60.0f
 #define RENDER_TIME 1.0f/120.0f
 
@@ -14,6 +14,7 @@ Juego::~Juego()
 {
 
 }
+
 void Juego::cargarCamara(){
 
     view1.reset(sf::FloatRect(200.f, 200.f, 300.f, 200.f));
@@ -27,15 +28,15 @@ void Juego::cargarCamara(){
 
 void Juego::cargarEnemy(){
 	enemy = new Enemy(sf::Vector2f(50,50));
-	enemy->setPos(sf::Vector2f(400, 146));
+	enemy->setPos(sf::Vector2f(400, 160));
 }
 
 void Juego::cargarCivil(){
-    civil = new Civil(sf::Vector2f(50,50));
+    civil = new Civil(sf::Vector2f(50,160));
 }
 
 void Juego::cargarPlayer(){
-	player = new Player(sf::Vector2f(50,50));
+	player = new Player(sf::Vector2f(50,160));
 }
 
 void Juego::cargarMapa(){
@@ -123,15 +124,30 @@ void Juego::Update()
         player->ReseteaMuro();
     }
 
+    if(cd2.getElapsedTime().asSeconds()>2){
+        player->resetBala();
+    }
+
+    if(cd3.getElapsedTime().asSeconds()>3){
+        enemy->resetBala();
+        cd3.restart();
+    }
+
+    if(enemy->getX() - player->getX() <150)
+        enemy->dispara();
+
     if(isFiring == true){
-        Bullet newBullet(sf::Vector2f(50, 5));
+
+        player->dispara(derecha);
+        isFiring = false;
+        /*Bullet newBullet(sf::Vector2f(50, 5),0);
         newBullet.setPos(sf::Vector2f(player->getX(), player->getY()));
         bulletVec.push_back(newBullet);
-        isFiring = false;
+        isFiring = false;*/
 
-        Bullet newBullet2(sf::Vector2f(5,5));
+        /*Bullet newBullet2(sf::Vector2f(5,5),1);
         newBullet2.setPos(sf::Vector2f(enemy->getX(), enemy->getY()));
-        bulletVecEnemy.push_back(newBullet2);
+        bulletVecEnemy.push_back(newBullet2);*/
     }
 }
 
@@ -145,11 +161,19 @@ void Juego::Render(float tiempo_fraccion)
     map1->draw(window);
 
     if(enemy->getVida() > 0){
-        for(int i = 0; i < bulletVec.size(); i++){
+
+        //if(player->getY() <= enemy->getY()-100)
+          //  enemy->dispara();
+
+        /*balaPlayer->draw(window);
+        balaPlayer->fire(10);
+        enemy->checkColl(*balaPlayer);*/
+
+        /*for(int i = 0; i < bulletVec.size(); i++){
             bulletVec[i].draw(window);
             bulletVec[i].fire(10);
             enemy->checkColl(bulletVec[i]);
-        }
+        }*/
     }
 
     if(player->getVida() > 0){
@@ -200,7 +224,7 @@ void Juego::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
 		isMovingUp = isPressed;
     }
 	else if (key == sf::Keyboard::Down){
-		isMovingDown = isPressed;
+		//isMovingDown = isPressed;
     }
 	else if (key == sf::Keyboard::Left){
         derecha=false;
@@ -225,6 +249,7 @@ void Juego::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
     }
     else if (key == sf::Keyboard::Space){
     isFiring=true;
+    cd2.restart();
     }
     else if (key == sf::Keyboard::Q){
      player->Muro(derecha);

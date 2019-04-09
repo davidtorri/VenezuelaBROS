@@ -19,7 +19,7 @@ Civil::Civil(sf::Vector2f size)
     sprite_civil->setTextureRect(sf::IntRect(1*75, 1*75, 75, 75));
     sprite_civil->setScale(0.5,0.5);
     // Lo dispongo en el centro de la pantalla
-    sprite_civil->setPosition(60, 200);
+    sprite_civil->setPosition(100, 160);
 }
 
 Civil::~Civil()

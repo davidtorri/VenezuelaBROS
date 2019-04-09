@@ -6,7 +6,7 @@
 
 class Bullet{
 public:
-    Bullet(sf::Vector2f size);
+    Bullet(sf::Vector2f size,int tipo);
 
     ~Bullet();
 
@@ -30,6 +30,8 @@ private:
     //sf::RectangleShape sprite_bullet;
     sf::Texture *Tbullet;
     sf::Sprite *sprite_bullet;
+
+    int dmg;
 
 
 };
