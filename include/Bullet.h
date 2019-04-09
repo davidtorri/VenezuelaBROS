@@ -27,9 +27,9 @@ public:
     void setPos(sf::Vector2f newPos);
 
 private:
-    sf::RectangleShape sprite_bullet;
-    //sf::Texture *Tbullet;
-    //sf::Sprite *sprite_bullet;
+    //sf::RectangleShape sprite_bullet;
+    sf::Texture *Tbullet;
+    sf::Sprite *sprite_bullet;
 
 
 };

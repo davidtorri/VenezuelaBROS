@@ -24,7 +24,7 @@ public:
 
     int getPetroleo();
 
-    void draw(sf::RenderWindow &window);
+    void draw(sf::RenderWindow &window, float);
 
     //En esta funcion de hace una llamada a la Ulti, la cual en cuanto llegue a la posicion actualdel personaje
     //eliminara a todos los enemigos y civiless que encuentre en el mapa
@@ -48,7 +48,19 @@ public:
 
     void checkColl(Bullet bullet);
 
+    void setInterpolando(bool t){interpolando = false;};
+
 private:
+
+    //Variables de movimiento
+    sf::Vector2f pos_anterior;
+    sf::Vector2f pos_nueva;
+
+    sf::Vector2f pos_anteriorOTAN;
+    sf::Vector2f pos_nuevaOTAN;
+
+    bool interpolando = false;
+
    // sf::RectangleShape player;
     sf::Texture *Tplayer=NULL;
     sf::Sprite *sprite_player;
