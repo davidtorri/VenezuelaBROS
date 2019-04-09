@@ -39,11 +39,12 @@ Player::Player(sf::Vector2f size) {
     sprite_muro->setTextureRect(sf::IntRect(0*75,0*75,75,75));
     sprite_muro->setScale(0.25,0.75);
 
-
-
-
     // Lo dispongo en el centro de la pantalla
     sprite_player->setPosition(323, 146);
+
+    //Declaramos las posiciones
+     pos_anterior = sf::Vector2f(323,146);
+     pos_nueva = sf::Vector2f(323,146);
 
 }
 
@@ -72,7 +73,10 @@ int Player::getPetroleo(){
  }
 
  void Player::move(sf::Vector2f dir){
-     sprite_player->move(dir);
+
+     pos_anterior = pos_nueva; // La anterior es la que era nueva
+     pos_nueva += dir;         // Actualiza la posición nueva
+     interpolando = true;      // Estamos interpolando
  }
 
 //ademas este metodo se encargará de comprobar que cuadno salga por pantalla el avion ya no exista
@@ -204,9 +208,18 @@ void Player::checkColl(Bullet bullet){
         }
 }
 
- void Player::draw(sf::RenderWindow& window){
+ void Player::draw(sf::RenderWindow& window, float porcentaje_interpolacion){
 
-     window.draw(*sprite_player);
+    //Interpolacin de la posición
+    if(interpolando)
+    {
+        sf::Vector2f pos_interpolada = pos_anterior * (1 - porcentaje_interpolacion) + pos_nueva * porcentaje_interpolacion;
+        sprite_player->setPosition(pos_interpolada);
+        std::cout << "Posicion personaje: " << pos_interpolada.x << "-"<< pos_interpolada.y << " con tiempo: " << porcentaje_interpolacion << std::endl;
+    }
+
+    //Dibujado del player
+    window.draw(*sprite_player);
 
      if(muroPuesto)
         window.draw(*sprite_muro);
