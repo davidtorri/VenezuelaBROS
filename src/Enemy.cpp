@@ -12,7 +12,7 @@ Enemy::Enemy(sf::Vector2f size) {
 
     Tenemy= new sf::Texture();
 
-    Tenemy->loadFromFile("resources/sprites.png");
+    Tenemy->loadFromFile("resources/soldier.png");
     sprite_enemy= new sf::Sprite(*Tenemy);
 
 
@@ -20,7 +20,7 @@ Enemy::Enemy(sf::Vector2f size) {
     sprite_enemy->setOrigin(75/2,75/2);
     //Cojo el sprite que me interesa por defecto del sheet
     sprite_enemy->setTextureRect(sf::IntRect(1*75, 1*75, 75, 75));
-    sprite_enemy->setScale(0.5,0.5);
+    sprite_enemy->setScale(0.7,0.7);
     // Lo dispongo en el centro de la pantalla
     sprite_enemy->setPosition(400, 200);
 

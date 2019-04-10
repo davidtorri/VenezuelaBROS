@@ -75,6 +75,7 @@ class Juego
         bool derecha  = true;
         bool firstTime;
 
+
         //============================
         //  Relojes
         //============================

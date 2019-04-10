@@ -16,6 +16,8 @@ public:
 
     void move(sf::Vector2f dir);
 
+    void CalcularSprite();
+
     int getX();
 
     int getY();
@@ -63,6 +65,10 @@ private:
     sf::Vector2f pos_anteriorOTAN;
     sf::Vector2f pos_nuevaOTAN;
 
+    sf::IntRect SpriteRight[6];
+    sf::IntRect SpriteLeft[6];
+    sf::IntRect SpriteDefault;
+
     bool interpolando = false;
 
    // sf::RectangleShape player;
@@ -88,6 +94,7 @@ private:
     bool llamada;
     bool disparado;
     bool disparoDerecha;
+    int velocidad;
 
     void moveOtan(sf::Vector2f dir);
     void moveBomba();
