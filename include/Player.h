@@ -69,10 +69,6 @@ private:
     sf::IntRect SpriteLeft[6];
     sf::IntRect SpriteDefault;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 71e6842e76dd480514c3f8cfa06c4ea838fd7720
     bool interpolando = false;
 
    // sf::RectangleShape player;
@@ -99,7 +95,6 @@ private:
     bool llamada;
     bool disparado;
     bool disparoDerecha;
-    int velocidad;
 
     void moveOtan(sf::Vector2f dir);
     void moveBomba();

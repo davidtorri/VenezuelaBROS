@@ -48,24 +48,23 @@ Player::Player(sf::Vector2f size) {
      pos_anterior = sf::Vector2f(200,160);
      pos_nueva = sf::Vector2f(200,160);
 
-<<<<<<< HEAD
+
           //Construit Sprites
      SpriteDefault = sf::IntRect(0, 0, 100, 100);
 
      for(int i = 0; i < 5; i ++){
         SpriteRight[i] = sf::IntRect(i*100, 1*100, 100, 100);
         SpriteLeft[i] = sf::IntRect(i*100, 3*100, 100, 100);
-=======
+
      //Construit Sprites
      SpriteDefault = sf::IntRect(0, 0, 100, 100);
      for(int i = 0; i < 5; i ++)
      {
      SpriteRight[i] = sf::IntRect(i*100, 1*100, 100, 100);
      SpriteLeft[i] = sf::IntRect(i*100, 3*100, 100, 100);
->>>>>>> 71e6842e76dd480514c3f8cfa06c4ea838fd7720
      }
 }
-
+}
 
 Player::~Player() {
     delete[] sprite_player;
@@ -112,30 +111,12 @@ void Player::CalcularSprite(){
      pos_anterior = pos_nueva; // La anterior es la que era nueva
      pos_nueva += dir;         // Actualiza la posición nueva
      interpolando = true;      // Estamos interpolando
-<<<<<<< HEAD
+
      CalcularSprite();
 }
 
- void Player::CalcularSprite(){
-    if (pos_anterior.x > pos_nueva.x ){
-      sprite_player->setTextureRect(SpriteLeft[velocidad%6]);
-      velocidad++;
-     }
-    if (pos_anterior.x < pos_nueva.x ){
-      sprite_player->setTextureRect(SpriteRight[velocidad%6]);
-      velocidad++;
-     }
-    if (pos_anterior.x == pos_nueva.x ){
-      sprite_player->setTextureRect(SpriteDefault);
-      velocidad=0;
-     }
-}
-=======
 
-     CalcularSprite();
 
- }
->>>>>>> 71e6842e76dd480514c3f8cfa06c4ea838fd7720
 
 //ademas este metodo se encargará de comprobar que cuadno salga por pantalla el avion ya no exista
  void Player::moveOtan(sf::Vector2f dir){
