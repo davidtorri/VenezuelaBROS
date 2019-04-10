@@ -1,8 +1,9 @@
 #include "Juego.h"
 
-#define kVel 7
+
 #define UPDATE_TIME 1.0f/60.0f
 #define RENDER_TIME 1.0f/120.0f
+#define kVel 250*UPDATE_TIME
 
 Juego* Juego::unica_instancia = 0;
 

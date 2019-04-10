@@ -8,17 +8,17 @@
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1554883367 source:/home/jaime/git_workspace/VenezuelaBROS/src/Enemy.cpp
+1554896085 source:/home/jaime/git_workspace/VenezuelaBROS/src/Enemy.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Enemy.h"
 
-1554832047 /home/jaime/git_workspace/VenezuelaBROS/include/Enemy.h
+1554896500 /home/jaime/git_workspace/VenezuelaBROS/include/Enemy.h
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Bullet.h"
 
-1554882426 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
+1554895952 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
 	"Juego.h"
 
 1554881373 /home/jaime/git_workspace/VenezuelaBROS/include/Juego.h
@@ -65,7 +65,7 @@
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1554890756 source:/home/jaime/git_workspace/VenezuelaBROS/src/Player.cpp
+1554894791 source:/home/jaime/git_workspace/VenezuelaBROS/src/Player.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Player.h"

@@ -93,11 +93,11 @@ void Player::CalcularSprite(){
 
 
  if (pos_anterior.x > pos_nueva.x ){
-      sprite_player->setTextureRect(SpriteLeft[velocidad%6]);
+      sprite_player->setTextureRect(SpriteLeft[velocidad%5]);
       velocidad++;
      }
      if (pos_anterior.x < pos_nueva.x ){
-      sprite_player->setTextureRect(SpriteRight[velocidad%6]);
+      sprite_player->setTextureRect(SpriteRight[velocidad%5]);
       velocidad++;
      }
     if (pos_anterior.x == pos_nueva.x ){
@@ -114,8 +114,6 @@ void Player::CalcularSprite(){
 
      CalcularSprite();
 }
-
-
 
 
 //ademas este metodo se encargará de comprobar que cuadno salga por pantalla el avion ya no exista

@@ -15,6 +15,8 @@ public:
 
     void setPos(sf::Vector2f newPos);
 
+    void mover(int speed);
+
     int getX();
 
     int getY();
@@ -38,6 +40,8 @@ private:
 
     int vida;
     bool disparado;
+    bool izquierda;
+    int posInicial;
 
 };
 

@@ -24,6 +24,11 @@ Enemy::Enemy(sf::Vector2f size) {
     // Lo dispongo en el centro de la pantalla
     sprite_enemy->setPosition(400, 200);
 
+    bool izquierda = true;
+
+    //debe ser la misma coordenada X en la que se genera el enemigo
+    posInicial = 400;
+
    /*
     sprite_enemy2->setOrigin(130/2,40/2);
     //Cojo el sprite que me interesa por defecto del sheet
@@ -38,6 +43,16 @@ Enemy::~Enemy() {
     //esto es el destructor
 
     delete[] sprite_enemy;
+}
+
+void Enemy::mover(int speed){
+    //if(getX())
+    sprite_enemy->move(speed, 0);
+
+    if(getX() == posInicial-50)
+        izquierda = false;
+    else if(getX()== posInicial +50)
+        izquierda = true;
 }
 
 int Enemy::getVida(){
@@ -84,6 +99,10 @@ void Enemy::checkColl(Bullet bullet){
 void Enemy::draw(sf::RenderWindow &window){
     if(vida > 0)
         window.draw(*sprite_enemy);
+        if(izquierda)
+            mover(-2);
+        else if(!izquierda)
+            mover(2);
 
     if(disparado){
         bala->draw(window);
