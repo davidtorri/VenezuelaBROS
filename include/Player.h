@@ -69,6 +69,10 @@ private:
     sf::IntRect SpriteLeft[6];
     sf::IntRect SpriteDefault;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 71e6842e76dd480514c3f8cfa06c4ea838fd7720
     bool interpolando = false;
 
    // sf::RectangleShape player;
@@ -89,6 +93,7 @@ private:
 
     int petroleo;
     int vida;
+    int velocidad;
     bool muroPuesto;
     bool otandisponible;
     bool llamada;
