@@ -31,6 +31,7 @@ class Juego
 
 
         int estado = 1;
+        int gid_pos;
         void crearVentana();
         void cargarCamara();
         void cargarPlayer();

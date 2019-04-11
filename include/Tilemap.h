@@ -29,15 +29,10 @@ public:
     sf::Sprite *_tilesetSprite;
     XMLElement *layer;
     const char *foldersrc = "resources/";
-
-
-
-
-
+    int getGid(int l, int y, int x);
 
 private:
 
- 
     sf::Texture m_tileset;
     sf::VertexArray m_vertices;
     sf::Sprite ****_tilemapSprite;
@@ -45,7 +40,7 @@ private:
     int _width;
     int _height;
     int _numLayers;
-    
+
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         // apply the transform

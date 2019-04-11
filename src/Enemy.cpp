@@ -28,14 +28,6 @@ Enemy::Enemy(sf::Vector2f size) {
 
     //debe ser la misma coordenada X en la que se genera el enemigo
     posInicial = 400;
-
-   /*
-    sprite_enemy2->setOrigin(130/2,40/2);
-    //Cojo el sprite que me interesa por defecto del sheet
-    sprite_enemy2->setTextureRect(sf::IntRect(1950, 1580, 95, 40));
-    sprite_enemy2->setScale(1,1);
-    // Lo dispongo en el centro de la pantalla
-    sprite_enemy2->setPosition(500, 300); */
 }
 
 
@@ -46,7 +38,7 @@ Enemy::~Enemy() {
 }
 
 void Enemy::mover(int speed){
-    //if(getX())
+
     sprite_enemy->move(speed, 0);
 
     if(getX() == posInicial-50)
@@ -85,14 +77,9 @@ void Enemy::dispara(){
 }
 
 void Enemy::checkColl(Bullet bullet){
-
-
-
         if(bullet.getRight() > sprite_enemy->getPosition().x &&
            bullet.getTop() < sprite_enemy->getPosition().y ){
             vida = vida - bullet.getDmg();
-            //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
-
         }
 }
 
@@ -100,12 +87,12 @@ void Enemy::draw(sf::RenderWindow &window){
     if(vida > 0)
         window.draw(*sprite_enemy);
         if(izquierda)
-            mover(-2);
+            mover(-1);
         else if(!izquierda)
-            mover(2);
+            mover(1);
 
     if(disparado){
         bala->draw(window);
-        bala->fire(-8);
+        bala->fire(-4);
     }
 }

@@ -1,13 +1,16 @@
 #include "Juego.h"
 
-
 #define UPDATE_TIME 1.0f/60.0f
 #define RENDER_TIME 1.0f/120.0f
-#define kVel 250*UPDATE_TIME
+#define kVel 200*UPDATE_TIME
 
 Juego* Juego::unica_instancia = 0;
 
 Juego::Juego(){
+isMovingDown=false;
+isMovingUp=false;
+isMovingRight=false;
+isMovingLeft=false;
 
 }
 
@@ -104,19 +107,44 @@ void Juego::Update()
     if(!firstTime)
         {
             sf::Vector2f vel;
-            if(isMovingDown)
-                vertic = kVel;
-            if(isMovingUp)
-                vertic = -kVel;
-            if(isMovingLeft)
-                horiz = -kVel;
-            if(isMovingRight)
-                horiz = kVel;
+            isMovingDown=true;
+            if(isMovingDown){
+                //vertic = kVel;
+                int gid_pos = map1->getGid(1, player->getY()+(kVel+25), player->getX());
+
+                if(gid_pos!=14 && gid_pos!=15){
+                    vertic = kVel;
+                }
+            }
+            if(isMovingUp){
+                int gid_pos = map1->getGid(1, player->getY()+(-kVel+25), player->getX());
+
+                if(gid_pos!=14 && gid_pos!=15){
+                    vertic = -kVel;
+                }
+            }
+                //vertic = -kVel;
+            if(isMovingLeft){
+                int gid_pos = map1->getGid(1, player->getY(), player->getX()+(-kVel-18));
+
+                if(gid_pos!=14 && gid_pos!=15){
+                    horiz = -kVel;
+                }
+            }
+
+            if(isMovingRight){
+                int gid_pos = map1->getGid(1, player->getY(), player->getX()+(+kVel+10));
+
+                if(gid_pos!=14 && gid_pos!=15){
+                    horiz = kVel;
+                }
+            }
 
             vel = sf::Vector2f(horiz,vertic);
 
             player->move(vel);
         }
+
 
 	firstTime=false;
 

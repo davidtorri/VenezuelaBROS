@@ -8,7 +8,7 @@
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1554896085 source:/home/jaime/git_workspace/VenezuelaBROS/src/Enemy.cpp
+1554898319 source:/home/jaime/git_workspace/VenezuelaBROS/src/Enemy.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Enemy.h"
@@ -18,10 +18,10 @@
 	<SFML/Graphics.hpp>
 	"Bullet.h"
 
-1554895952 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
+1554999308 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
 	"Juego.h"
 
-1554881373 /home/jaime/git_workspace/VenezuelaBROS/include/Juego.h
+1554868290 /home/jaime/git_workspace/VenezuelaBROS/include/Juego.h
 	<sstream>
 	<iostream>
 	<SFML/Graphics.hpp>
@@ -33,13 +33,13 @@
 	"Camara.h"
 	"Civil.h"
 
-1553813225 /home/jaime/git_workspace/VenezuelaBROS/include/Tilemap.h
+1554868286 /home/jaime/git_workspace/VenezuelaBROS/include/Tilemap.h
 	<sstream>
 	<iostream>
 	<SFML/Graphics.hpp>
 	"tinyxml2.h"
 
-1553813225 /home/jaime/git_workspace/VenezuelaBROS/include/tinyxml2.h
+1554868290 /home/jaime/git_workspace/VenezuelaBROS/include/tinyxml2.h
 	<ctype.h>
 	<limits.h>
 	<stdio.h>
@@ -65,15 +65,15 @@
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1554894791 source:/home/jaime/git_workspace/VenezuelaBROS/src/Player.cpp
+1554999517 source:/home/jaime/git_workspace/VenezuelaBROS/src/Player.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Player.h"
 
-1554482834 source:/home/jaime/git_workspace/VenezuelaBROS/src/Tilemap.cpp
+1554998630 source:/home/jaime/git_workspace/VenezuelaBROS/src/Tilemap.cpp
 	"Tilemap.h"
 
-1554396001 source:/home/jaime/git_workspace/VenezuelaBROS/src/tinyxml2.cpp
+1554998658 source:/home/jaime/git_workspace/VenezuelaBROS/src/tinyxml2.cpp
 	"tinyxml2.h"
 	<new>
 	<stddef.h>

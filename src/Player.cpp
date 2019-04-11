@@ -26,7 +26,7 @@ Player::Player(sf::Vector2f size) {
     Tplayer->loadFromFile("resources/trump.png");
     sprite_player= new sf::Sprite(*Tplayer);
 
-    Tmuro->loadFromFile("resources/PixelAtlas.png");
+    Tmuro->loadFromFile("resources/muro.jpg");
     sprite_muro = new sf::Sprite(*Tmuro);
 
 
@@ -42,11 +42,11 @@ Player::Player(sf::Vector2f size) {
     sprite_muro->setScale(0.25,0.75);
 
     // Lo dispongo en el centro de la pantalla
-    sprite_player->setPosition(200, 160);
+    sprite_player->setPosition(93, 6);
 
     //Declaramos las posiciones
-     pos_anterior = sf::Vector2f(200,160);
-     pos_nueva = sf::Vector2f(200,160);
+     pos_anterior = sf::Vector2f(93,6);
+     pos_nueva = sf::Vector2f(93,6);
 
 
           //Construit Sprites
