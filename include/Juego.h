@@ -41,7 +41,6 @@ class Juego
 
         void bucleJuego();
 
-
         int right = 600;
         int left = 150;
 
@@ -77,6 +76,8 @@ class Juego
         bool isFiring = false;
         bool derecha  = true;
         bool firstTime;
+
+        double jesustonto;
 
 
         //============================

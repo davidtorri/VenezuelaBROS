@@ -73,6 +73,7 @@ Player::~Player() {
     delete[] sprite_muro;
     delete[] sprite_otan;
     delete[] sprite_bomba;
+    delete bala;
 }
 
 int Player::getVida(){

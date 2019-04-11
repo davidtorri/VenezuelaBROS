@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Enemy.h"
 
-#define kVida 300
+#define kVida 30
 
 Enemy::Enemy(sf::Vector2f size) {
 
@@ -37,6 +37,7 @@ Enemy::~Enemy() {
     //esto es el destructor
 
     delete[] sprite_enemy;
+    delete bala;
 }
 
 void Enemy::mover(int speed){

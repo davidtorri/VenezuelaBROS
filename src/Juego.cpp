@@ -67,6 +67,10 @@ void Juego::bucleJuego(){
 
         processEvents();
 
+       /* double jesustontito = update_time.getElapsedTime().asSeconds();
+
+        jesustonto = jesustontito;*/
+
         if(update_time.getElapsedTime().asSeconds() >= UPDATE_TIME)
         {
             Update();
@@ -166,16 +170,32 @@ void Juego::Update()
         cd3.restart();
     }
 
-    if(enemy->getX() - player->getX() <150)
-        enemy->dispara();
-
     if(enemy2->getX() - player->getX() < 150)
         enemy2->dispara();
 
     if(isFiring == true){
-
         player->dispara(derecha);
         isFiring = false;
+    }
+
+    if(enemy!=NULL){
+        if(enemy->getX() - player->getX() < 150)
+            enemy->dispara();
+        if(player->getBalaActivada())
+            enemy->checkColl(player->getBala());
+    }
+    else{
+        delete enemy;
+    }
+
+    if(enemy2!=NULL){
+        if(enemy2->getX() - player->getX() < 150)
+            enemy2->dispara();
+        if(player->getBalaActivada())
+            enemy2->checkColl(player->getBala());
+    }
+    else{
+        delete enemy2;
     }
 }
 
@@ -188,27 +208,16 @@ void Juego::Render(float tiempo_fraccion)
     //window.draw(backgroundSprite);
     map1->draw(window);
 
-    /*if(player->getVida() > 0){
-        for(int i = 0;i < bulletVecEnemy.size(); i++){
-            bulletVecEnemy[i].draw(window);
-            bulletVecEnemy[i].fire(-5);
-            player->checkColl(bulletVecEnemy[i]);
-        }
-    }*/
-
-
     player->draw(window, tiempo_fraccion);
     player->checkColl(enemy->getBala());
     player->checkColl(enemy2->getBala());
-    enemy->draw(window);
-    if(enemy->getVida()>0 && player->getBalaActivada()){
 
-        enemy->checkColl(player->getBala());
-    }
-    enemy2->draw(window);
-    if(enemy2->getVida()>0 && player->getBalaActivada()){
-        enemy2->checkColl(player->getBala());
-    }
+    if(enemy!=NULL)
+        enemy->draw(window);
+
+    if(enemy2!=NULL)
+        enemy2->draw(window);
+
     civil->draw(window);
 
     window.display();
