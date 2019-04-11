@@ -29,6 +29,8 @@ Player::Player(sf::Vector2f size) {
     Tmuro->loadFromFile("resources/muro.jpg");
     sprite_muro = new sf::Sprite(*Tmuro);
 
+    bala = new Bullet(sf::Vector2f(50,50),0);
+
 
     //Le pongo el centroide donde corresponde
     sprite_player->setOrigin(75/2,75/2);
@@ -36,17 +38,17 @@ Player::Player(sf::Vector2f size) {
 
     //Cojo el sprite que me interesa por defecto del sheet
     sprite_player->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
-    sprite_player->setScale(0.5,0.5);
+    sprite_player->setScale(0.55,0.55);
 
     sprite_muro->setTextureRect(sf::IntRect(0*75,0*75,75,75));
     sprite_muro->setScale(0.25,0.75);
 
     // Lo dispongo en el centro de la pantalla
-    sprite_player->setPosition(93, 6);
+    sprite_player->setPosition(size);
 
     //Declaramos las posiciones
-     pos_anterior = sf::Vector2f(93,6);
-     pos_nueva = sf::Vector2f(93,6);
+     pos_anterior = sf::Vector2f(size);
+     pos_nueva = sf::Vector2f(size);
 
 
           //Construit Sprites
@@ -88,6 +90,18 @@ int Player::getPetroleo(){
  int Player::getY(){
     return sprite_player->getPosition().y;
  }
+
+ Bullet Player::getBala(){
+    return *bala;
+ }
+
+ bool Player::getBalaActivada(){
+    if(disparado == true){
+        return true;
+    }
+    else
+        return false;
+}
 
 void Player::CalcularSprite(){
 
@@ -157,7 +171,6 @@ void Player::CalcularSprite(){
 void Player::dispara(bool derecha){
     if(!disparado)
     {
-        bala = new Bullet(sf::Vector2f(50,50),0);
         bala->setPos(sprite_player->getPosition());
         disparado = true;
         disparoDerecha = derecha;
@@ -245,8 +258,10 @@ void Player::dispara(bool derecha){
 
 void Player::checkColl(Bullet bullet){
 
-        if(bullet.getRight() > sprite_player->getPosition().x &&
-           bullet.getTop() < sprite_player->getPosition().y ){
+        sf::FloatRect posicion(bullet.getPositionSprite(),{32,32});
+
+        if(sprite_player->getGlobalBounds().intersects(posicion)){
+            std::cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << std::endl;
             vida = vida - bullet.getDmg();
             //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
         }

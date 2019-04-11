@@ -65,6 +65,10 @@ int Bullet::getDmg(){
     return dmg;
 }
 
+const sf::Vector2f Bullet::getPositionSprite(){
+    return sprite_bullet->getPosition();
+}
+
 void Bullet::draw(sf::RenderWindow &window){
     window.draw(*sprite_bullet);
 }

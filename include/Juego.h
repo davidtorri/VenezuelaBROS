@@ -63,6 +63,7 @@ class Juego
 
         Player* player; // Juego principal
         Enemy* enemy;   // Enemigo principal
+        Enemy* enemy2;  // Enemigo dos
         Civil* civil;   // Personaje NPC del juego
         Tilemap* map1;  // Mapa del juego
         //Camara* camara;
@@ -70,6 +71,7 @@ class Juego
         //Arrays dinmicos para gestionar las balas del juego
         std::vector<Bullet> bulletVec;
         std::vector<Bullet> bulletVecEnemy;
+
 
         //Variables para controlar el disparo y algo raro de la derecha
         bool isFiring = false;

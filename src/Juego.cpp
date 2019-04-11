@@ -31,8 +31,11 @@ void Juego::cargarCamara(){
 }
 
 void Juego::cargarEnemy(){
-	enemy = new Enemy(sf::Vector2f(50,50));
-	enemy->setPos(sf::Vector2f(400, 160));
+
+    enemy = new Enemy(sf::Vector2f(400,133));
+
+    enemy2 = new Enemy(sf::Vector2f(556,56));
+
 }
 
 void Juego::cargarCivil(){
@@ -40,7 +43,7 @@ void Juego::cargarCivil(){
 }
 
 void Juego::cargarPlayer(){
-	player = new Player(sf::Vector2f(50,160));
+	player = new Player(sf::Vector2f(93, 133));
 }
 
 void Juego::cargarMapa(){
@@ -94,12 +97,12 @@ void Juego::Update()
     player->setInterpolando(false);
 
 
-    /*
+
     cout << "PlayerX"<< player->getX() << endl;
     cout << "PlayerY"<< player->getY() << endl;
     cout << "Player Vida"<<player->getVida() <<endl;
     cout << "Enemy Vida"<< enemy->getVida() <<endl;
-    */
+
 
     //window.setView(camara->returnview());
     window.setView(view2);
@@ -159,24 +162,20 @@ void Juego::Update()
 
     if(cd3.getElapsedTime().asSeconds()>3){
         enemy->resetBala();
+        enemy2->resetBala();
         cd3.restart();
     }
 
     if(enemy->getX() - player->getX() <150)
         enemy->dispara();
 
+    if(enemy2->getX() - player->getX() < 150)
+        enemy2->dispara();
+
     if(isFiring == true){
 
         player->dispara(derecha);
         isFiring = false;
-        /*Bullet newBullet(sf::Vector2f(50, 5),0);
-        newBullet.setPos(sf::Vector2f(player->getX(), player->getY()));
-        bulletVec.push_back(newBullet);
-        isFiring = false;*/
-
-        /*Bullet newBullet2(sf::Vector2f(5,5),1);
-        newBullet2.setPos(sf::Vector2f(enemy->getX(), enemy->getY()));
-        bulletVecEnemy.push_back(newBullet2);*/
     }
 }
 
@@ -189,33 +188,27 @@ void Juego::Render(float tiempo_fraccion)
     //window.draw(backgroundSprite);
     map1->draw(window);
 
-    if(enemy->getVida() > 0){
-
-        //if(player->getY() <= enemy->getY()-100)
-          //  enemy->dispara();
-
-        /*balaPlayer->draw(window);
-        balaPlayer->fire(10);
-        enemy->checkColl(*balaPlayer);*/
-
-        /*for(int i = 0; i < bulletVec.size(); i++){
-            bulletVec[i].draw(window);
-            bulletVec[i].fire(10);
-            enemy->checkColl(bulletVec[i]);
-        }*/
-    }
-
-    if(player->getVida() > 0){
+    /*if(player->getVida() > 0){
         for(int i = 0;i < bulletVecEnemy.size(); i++){
             bulletVecEnemy[i].draw(window);
             bulletVecEnemy[i].fire(-5);
             player->checkColl(bulletVecEnemy[i]);
         }
-    }
+    }*/
 
 
     player->draw(window, tiempo_fraccion);
+    player->checkColl(enemy->getBala());
+    player->checkColl(enemy2->getBala());
     enemy->draw(window);
+    if(enemy->getVida()>0 && player->getBalaActivada()){
+
+        enemy->checkColl(player->getBala());
+    }
+    enemy2->draw(window);
+    if(enemy2->getVida()>0 && player->getBalaActivada()){
+        enemy2->checkColl(player->getBala());
+    }
     civil->draw(window);
 
     window.display();

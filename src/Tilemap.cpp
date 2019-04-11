@@ -79,7 +79,7 @@ Tilemap::Tilemap(const char* tmxFile){
         }
 
         for(int l=0; l < _numLayers; l++){
-            cout << "Layer num " << l << endl;
+            //cout << "Layer num " << l << endl;
             for(int y=0; y < _height; y++) {
                 for(int x = 0; x < _width; x++){
                 	//if(map->FirstChildElement("layer")->FirstChildElement("data")->FirstChildElement("tile")->FirstChildElement("gid")){
@@ -93,7 +93,7 @@ Tilemap::Tilemap(const char* tmxFile){
                             _tilemap[l][y][x]=51;
                 		}
 
-                		cout << "Capa[" << l << "] y:" << y << " x:" << x << " -gid: " << _tilemap[l][y][x]-1 << endl;
+                		//cout << "Capa[" << l << "] y:" << y << " x:" << x << " -gid: " << _tilemap[l][y][x]-1 << endl;
 
                 		//}
                 	//}else{
@@ -160,11 +160,11 @@ int Tilemap::getGid(int l, int y, int x){
     if( x>=1 && x<=49 && y>=0 && y<=14 ){
         int layer0 = _tilemap[0][y][x];
         int layer1 = _tilemap[1][y][x];
-        cout << "gid layer 0 " << layer0 << " for position x:" << x << " y:" << y << endl;
-        cout << "gid layer 1 " << layer1 << " for position x:" << x << " y:" << y << endl;
+        /*cout << "gid layer 0 " << layer0 << " for position x:" << x << " y:" << y << endl;
+        cout << "gid layer 1 " << layer1 << " for position x:" << x << " y:" << y << endl;*/
         gid = layer1;
     }else{
-        cout << "Wrong x and y: " << x << ", " << y << endl;
+        //cout << "Wrong x and y: " << x << ", " << y << endl;
         gid=15;
     }
 

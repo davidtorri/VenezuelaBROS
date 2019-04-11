@@ -22,6 +22,8 @@ public:
 
     int getDmg();
 
+    const sf::Vector2f getPositionSprite();
+
     void draw(sf::RenderWindow &window);
 
     void setPos(sf::Vector2f newPos);

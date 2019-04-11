@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Enemy.h"
 
-#define kVida 30
+#define kVida 300
 
 Enemy::Enemy(sf::Vector2f size) {
 
@@ -15,19 +15,21 @@ Enemy::Enemy(sf::Vector2f size) {
     Tenemy->loadFromFile("resources/soldier.png");
     sprite_enemy= new sf::Sprite(*Tenemy);
 
+    bala = new Bullet(sf::Vector2f(50,50),1);
+
 
     //Le pongo el centroide donde corresponde
     sprite_enemy->setOrigin(75/2,75/2);
     //Cojo el sprite que me interesa por defecto del sheet
     sprite_enemy->setTextureRect(sf::IntRect(1*75, 1*75, 75, 75));
-    sprite_enemy->setScale(0.7,0.7);
+    sprite_enemy->setScale(0.75,0.75);
     // Lo dispongo en el centro de la pantalla
-    sprite_enemy->setPosition(400, 200);
+    sprite_enemy->setPosition(size);
 
     bool izquierda = true;
 
     //debe ser la misma coordenada X en la que se genera el enemigo
-    posInicial = 400;
+    posInicial = size.x;
 }
 
 
@@ -41,10 +43,14 @@ void Enemy::mover(int speed){
 
     sprite_enemy->move(speed, 0);
 
-    if(getX() == posInicial-50)
+    if(getX() == posInicial-40)
         izquierda = false;
-    else if(getX()== posInicial +50)
+    else if(getX()== posInicial +40)
         izquierda = true;
+}
+
+Bullet Enemy::getBala(){
+    return *bala;
 }
 
 int Enemy::getVida(){
@@ -70,20 +76,24 @@ void Enemy::resetBala(){
 void Enemy::dispara(){
     if(!disparado)
     {
-        bala = new Bullet(sf::Vector2f(50,50),1);
         bala->setPos(sprite_enemy->getPosition());
         disparado = true;
     }
 }
 
 void Enemy::checkColl(Bullet bullet){
-        if(bullet.getRight() > sprite_enemy->getPosition().x &&
-           bullet.getTop() < sprite_enemy->getPosition().y ){
+
+        sf::FloatRect posicion(bullet.getPositionSprite(),{32,32});
+
+        if(sprite_enemy->getGlobalBounds().intersects(posicion)){
+            std::cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << std::endl;
             vida = vida - bullet.getDmg();
+            //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
         }
 }
 
 void Enemy::draw(sf::RenderWindow &window){
+
     if(vida > 0)
         window.draw(*sprite_enemy);
         if(izquierda)
@@ -91,7 +101,7 @@ void Enemy::draw(sf::RenderWindow &window){
         else if(!izquierda)
             mover(1);
 
-    if(disparado){
+    if(disparado && vida > 0){
         bala->draw(window);
         bala->fire(-4);
     }

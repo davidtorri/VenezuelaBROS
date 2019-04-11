@@ -17,6 +17,8 @@ public:
 
     void mover(int speed);
 
+    Bullet getBala();
+
     int getX();
 
     int getY();

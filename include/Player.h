@@ -18,6 +18,8 @@ public:
 
     void CalcularSprite();
 
+    Bullet getBala();
+
     int getX();
 
     int getY();
@@ -27,6 +29,8 @@ public:
     int getPetroleo();
 
     void draw(sf::RenderWindow &window, float);
+
+    bool getBalaActivada();
 
     //En esta funcion de hace una llamada a la Ulti, la cual en cuanto llegue a la posicion actualdel personaje
     //eliminara a todos los enemigos y civiless que encuentre en el mapa
