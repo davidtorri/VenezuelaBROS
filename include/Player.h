@@ -7,14 +7,17 @@
 
 #include "Bullet.h"
 
+using namespace std;
+using namespace sf;
+
 
 class Player{
 public:
-    Player(sf::Vector2f size);
+    Player(Vector2f size);
 
     ~Player();
 
-    void move(sf::Vector2f dir);
+    void move(Vector2f dir);
 
     void CalcularSprite();
 
@@ -28,7 +31,7 @@ public:
 
     int getPetroleo();
 
-    void draw(sf::RenderWindow &window, float);
+    void draw(RenderWindow &window, float);
 
     bool getBalaActivada();
 
@@ -63,33 +66,33 @@ public:
 private:
 
     //Variables de movimiento
-    sf::Vector2f pos_anterior;
-    sf::Vector2f pos_nueva;
+    Vector2f pos_anterior;
+    Vector2f pos_nueva;
 
-    sf::Vector2f pos_anteriorOTAN;
-    sf::Vector2f pos_nuevaOTAN;
+    Vector2f pos_anteriorOTAN;
+    Vector2f pos_nuevaOTAN;
 
-    sf::IntRect SpriteRight[6];
-    sf::IntRect SpriteLeft[6];
-    sf::IntRect SpriteDefault;
+    IntRect SpriteRight[6];
+    IntRect SpriteLeft[6];
+    IntRect SpriteDefault;
 
     bool interpolando = false;
 
    // sf::RectangleShape player;
-    sf::Texture *Tplayer=NULL;
-    sf::Sprite *sprite_player;
+    Texture *Tplayer=NULL;
+    Sprite *sprite_player;
 
-    sf::Texture *Tmuro=NULL;
-    sf::Sprite *sprite_muro;
+    Texture *Tmuro=NULL;
+    Sprite *sprite_muro;
 
-    sf::Texture *Totan=NULL;
-    sf::Sprite *sprite_otan;
+    Texture *Totan=NULL;
+    Sprite *sprite_otan;
 
-    sf::Texture *Tbomba=NULL;
-    sf::Sprite *sprite_bomba;
+    Texture *Tbomba=NULL;
+    Sprite *sprite_bomba;
 
     Bullet *bala;
-    std::vector<sf::Sprite> bombas;
+    vector<Sprite> bombas;
 
     int petroleo;
     int vida;
@@ -100,7 +103,7 @@ private:
     bool disparado;
     bool disparoDerecha;
 
-    void moveOtan(sf::Vector2f dir);
+    void moveOtan(Vector2f dir);
     void moveBomba();
 
 };

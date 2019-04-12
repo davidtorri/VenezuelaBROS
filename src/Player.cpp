@@ -5,7 +5,7 @@
 
 #define kVida 11100
 
-Player::Player(sf::Vector2f size) {
+Player::Player(Vector2f size) {
   //  sprite_player->setSize(size);
     //sprite_player->setFillColor(sf::Color::Green);
 
@@ -18,18 +18,18 @@ Player::Player(sf::Vector2f size) {
     velocidad = 0;
     vida = kVida;
     velocidad = 0;
-    Tplayer = new sf::Texture();
+    Tplayer = new Texture();
 
-    Tmuro = new sf::Texture();
+    Tmuro = new Texture();
 
 
     Tplayer->loadFromFile("resources/trump.png");
-    sprite_player= new sf::Sprite(*Tplayer);
+    sprite_player= new Sprite(*Tplayer);
 
     Tmuro->loadFromFile("resources/muro.jpg");
-    sprite_muro = new sf::Sprite(*Tmuro);
+    sprite_muro = new Sprite(*Tmuro);
 
-    bala = new Bullet(sf::Vector2f(50,50),0);
+    bala = new Bullet(Vector2f(50,50),0);
 
 
     //Le pongo el centroide donde corresponde
@@ -37,26 +37,26 @@ Player::Player(sf::Vector2f size) {
     sprite_muro->setOrigin(75/2,75/2);
 
     //Cojo el sprite que me interesa por defecto del sheet
-    sprite_player->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
+    sprite_player->setTextureRect(IntRect(0*75, 0*75, 75, 75));
     sprite_player->setScale(0.55,0.55);
 
-    sprite_muro->setTextureRect(sf::IntRect(0*75,0*75,75,75));
+    sprite_muro->setTextureRect(IntRect(0*75,0*75,75,75));
     sprite_muro->setScale(0.25,0.75);
 
     // Lo dispongo en el centro de la pantalla
     sprite_player->setPosition(size);
 
     //Declaramos las posiciones
-     pos_anterior = sf::Vector2f(size);
-     pos_nueva = sf::Vector2f(size);
+     pos_anterior = Vector2f(size);
+     pos_nueva = Vector2f(size);
 
 
           //Construit Sprites
-     SpriteDefault = sf::IntRect(0, 0, 100, 100);
+     SpriteDefault = IntRect(0, 0, 100, 100);
 
      for(int i = 0; i < 5; i ++){
-        SpriteRight[i] = sf::IntRect(i*100, 1*100, 100, 100);
-        SpriteLeft[i] = sf::IntRect(i*100, 3*100, 100, 100);
+        SpriteRight[i] = IntRect(i*100, 1*100, 100, 100);
+        SpriteLeft[i] = IntRect(i*100, 3*100, 100, 100);
     }
 }
 
@@ -113,7 +113,7 @@ void Player::CalcularSprite(){
      }
 }
 
- void Player::move(sf::Vector2f dir){
+ void Player::move(Vector2f dir){
 
      pos_anterior = pos_nueva; // La anterior es la que era nueva
      pos_nueva += dir;         // Actualiza la posición nueva
@@ -124,7 +124,7 @@ void Player::CalcularSprite(){
 
 
 //ademas este metodo se encargará de comprobar que cuadno salga por pantalla el avion ya no exista
- void Player::moveOtan(sf::Vector2f dir){
+ void Player::moveOtan(Vector2f dir){
     sprite_otan->move(dir);
     if(sprite_otan->getPosition().x>=sprite_player->getPosition().x+500){
         llamada = false;
@@ -218,21 +218,21 @@ void Player::dispara(bool derecha){
  }
 
  void Player::CreaSpriteOtan(){
-    Totan = new sf::Texture();
+    Totan = new Texture();
     Totan->loadFromFile("resources/plane.png");
-    sprite_otan = new sf::Sprite(*Totan);
+    sprite_otan = new Sprite(*Totan);
     sprite_otan->setOrigin(75/2,75/2);
-    sprite_otan->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
+    sprite_otan->setTextureRect(IntRect(0*75, 0*75, 75, 75));
     sprite_otan->setScale(1.5,1.5);
     sprite_otan->setPosition(-100,0);
  }
 
  void Player::CreaSpriteBomba(){
-    Tbomba = new sf::Texture();
+    Tbomba = new Texture();
     Tbomba->loadFromFile("resources/bomb.png");
-    sprite_bomba = new sf::Sprite(*Tbomba);
+    sprite_bomba = new Sprite(*Tbomba);
     sprite_bomba->setOrigin(75/2,75/2);
-    sprite_bomba->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
+    sprite_bomba->setTextureRect(IntRect(0*75, 0*75, 75, 75));
     sprite_bomba->setScale(1,1);
 
     for(int i  = 0; i<10;i++)
@@ -254,7 +254,7 @@ void Player::checkColl(Bullet bullet){
         sf::FloatRect posicion(bullet.getPositionSprite(),{32,32});
 
         if(sprite_player->getGlobalBounds().intersects(posicion)){
-            std::cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << std::endl;
+            cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << endl;
             vida = vida - bullet.getDmg();
             //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
         }
@@ -265,14 +265,14 @@ void Player::resetBala(){
 
 }
 
- void Player::draw(sf::RenderWindow& window, float porcentaje_interpolacion){
+ void Player::draw(RenderWindow& window, float porcentaje_interpolacion){
 
     //Interpolacin de la posición
     if(interpolando)
     {
-        sf::Vector2f pos_interpolada = pos_anterior * (1 - porcentaje_interpolacion) + pos_nueva * porcentaje_interpolacion;
+        Vector2f pos_interpolada = pos_anterior * (1 - porcentaje_interpolacion) + pos_nueva * porcentaje_interpolacion;
         sprite_player->setPosition(pos_interpolada);
-        std::cout << "Posicion personaje: " << pos_interpolada.x << "-"<< pos_interpolada.y << " con tiempo: " << porcentaje_interpolacion << std::endl;
+        cout << "Posicion personaje: " << pos_interpolada.x << "-"<< pos_interpolada.y << " con tiempo: " << porcentaje_interpolacion << endl;
     }
 
     //Dibujado del player

@@ -55,7 +55,7 @@
 	<android/log.h>
 	<assert.h>
 
-1555084934 /home/jaime/git_workspace/VenezuelaBROS/include/Player.h
+1555087779 /home/jaime/git_workspace/VenezuelaBROS/include/Player.h
 	<iostream>
 	<stdlib.h>
 	<SFML/Graphics.hpp>
@@ -65,7 +65,7 @@
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1555084934 source:/home/jaime/git_workspace/VenezuelaBROS/src/Player.cpp
+1555087856 source:/home/jaime/git_workspace/VenezuelaBROS/src/Player.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Player.h"
