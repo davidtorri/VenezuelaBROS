@@ -57,15 +57,7 @@ Player::Player(sf::Vector2f size) {
      for(int i = 0; i < 5; i ++){
         SpriteRight[i] = sf::IntRect(i*100, 1*100, 100, 100);
         SpriteLeft[i] = sf::IntRect(i*100, 3*100, 100, 100);
-
-     //Construit Sprites
-     SpriteDefault = sf::IntRect(0, 0, 100, 100);
-     for(int i = 0; i < 5; i ++)
-     {
-     SpriteRight[i] = sf::IntRect(i*100, 1*100, 100, 100);
-     SpriteLeft[i] = sf::IntRect(i*100, 3*100, 100, 100);
-     }
-}
+    }
 }
 
 Player::~Player() {

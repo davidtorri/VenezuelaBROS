@@ -8,7 +8,7 @@
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1555085888 source:/home/jaime/git_workspace/VenezuelaBROS/src/Enemy.cpp
+1555087258 source:/home/jaime/git_workspace/VenezuelaBROS/src/Enemy.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Enemy.h"
@@ -18,7 +18,7 @@
 	<SFML/Graphics.hpp>
 	"Bullet.h"
 
-1555085807 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
+1555087365 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
 	"Juego.h"
 
 1555085640 /home/jaime/git_workspace/VenezuelaBROS/include/Juego.h

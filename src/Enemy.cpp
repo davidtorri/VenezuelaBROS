@@ -34,7 +34,8 @@ Enemy::Enemy(Vector2f size) {
 
 
 Enemy::~Enemy() {
-    //esto es el destructor
+    delete Tenemy;
+    Tenemy = NULL;
     delete sprite_enemy;
     sprite_enemy = NULL;
     delete bala;

@@ -23,8 +23,6 @@ Juego::~Juego()
 void Juego::cargarCamara(){
 
     view1.reset(FloatRect(200.f, 200.f, 300.f, 200.f));
-
-
     view2.setCenter(Vector2f(350.f, 120.f));
     view2.setSize(Vector2f(600.f, 300.f));
 
@@ -164,13 +162,12 @@ void Juego::Update()
     }
 
     if(cd3.getElapsedTime().asSeconds()>3){
-        enemy->resetBala();
-        enemy2->resetBala();
+        if(enemy != NULL)
+            enemy->resetBala();
+        if(enemy2 != NULL)
+            enemy2->resetBala();
         cd3.restart();
     }
-
-    if(enemy2->getX() - player->getX() < 150)
-        enemy2->dispara();
 
     if(isFiring == true){
         player->dispara(derecha);
@@ -190,6 +187,16 @@ void Juego::Update()
         if(player->getBalaActivada())
             enemy2->checkColl(player->getBala());
     }
+
+    if(enemy!=NULL && enemy->getVida() <= 0){
+        delete enemy;
+        enemy = NULL;
+    }
+
+    if(enemy2!=NULL && enemy2->getVida() <= 0){
+        delete enemy2;
+        enemy2 = NULL;
+    }
 }
 
 
@@ -202,8 +209,6 @@ void Juego::Render(float tiempo_fraccion)
     map1->draw(window);
 
     player->draw(window, tiempo_fraccion);
-    player->checkColl(enemy->getBala());
-    player->checkColl(enemy2->getBala());
 
     if(enemy!=NULL)
         enemy->draw(window);
