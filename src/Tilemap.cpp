@@ -31,7 +31,7 @@ Tilemap::Tilemap(const char* tmxFile){
         _tilesetSprite = new sf::Sprite[_tilecount];
 
         for(int i = 0; i < _tilecount; i++){
-            //cout << "PosX: " << posX << " - PosY: " << posY << " - width: " << _tilewidth << " - height: " << _tileheight << endl;
+            cout << "PosX: " << posX << " - PosY: " << posY << " - width: " << _tilewidth << " - height: " << _tileheight << endl;
             _tilesetSprite[i].setTextureRect(sf::IntRect(posX, posY, _tilewidth, _tileheight));
             posX += _tilewidth;
             if(posX >= _imgWidth){
@@ -79,7 +79,7 @@ Tilemap::Tilemap(const char* tmxFile){
         }
 
         for(int l=0; l < _numLayers; l++){
-            cout << "Layer num " << l << endl;
+            //cout << "Layer num " << l << endl;
             for(int y=0; y < _height; y++) {
                 for(int x = 0; x < _width; x++){
                 	//if(map->FirstChildElement("layer")->FirstChildElement("data")->FirstChildElement("tile")->FirstChildElement("gid")){
@@ -89,9 +89,11 @@ Tilemap::Tilemap(const char* tmxFile){
 
                 		//cout << data[l]->QueryIntAttribute("gid", &_tilemap[l][y][x]) << endl;
 
-                		data[l]->QueryIntAttribute("gid", &_tilemap[l][y][x]);
+                		if( data[l]->QueryIntAttribute("gid", &_tilemap[l][y][x]) == 1 ){
+                            _tilemap[l][y][x]=51;
+                		}
 
-                		cout << "Tile l y x: " << l << " " << y << " " << x << " --gid: " << _tilemap[l][y][x] << endl;
+                		//cout << "Capa[" << l << "] y:" << y << " x:" << x << " -gid: " << _tilemap[l][y][x]-1 << endl;
 
                 		//}
                 	//}else{
@@ -112,13 +114,14 @@ cout << "Tiles leidos --------" << endl;
         for(int l=0; l < _numLayers;l++){
             for(int y=0; y < _height; y++){
                 for(int x = 0; x < _width; x++){
-                    int gid = _tilemap[l][y][x]-1;
+                    int dif = -1;
+                    int gid = _tilemap[l][y][x]+dif;
 
-                    if(gid>20){
+                    if(gid==50){
                         gid = NULL;
                     }
                     //cout << "Executing " << l << " " << y << " " << x << " gid: " << gid << endl;
-                    if(gid !=NULL && gid>0){
+                    if(gid !=NULL && gid>dif-1){
                         //cout << "Gid things 1" << endl;
                     	_tilemapSprite[l][y][x] = new sf::Sprite(_tilesetTexture, _tilesetSprite[gid].getTextureRect());
                     	//cout << "Gid things 2" << endl;
@@ -140,7 +143,7 @@ cout << "Tiles leidos --------" << endl;
                 for(int x = 0; x < _width; x++){
 
                     if(_tilemapSprite[l][y][x] != NULL){
-                        _tilemapSprite[l][y][x]->setScale(sf::Vector2f(1.0f, 1.0f));
+                        _tilemapSprite[l][y][x]->setScale(sf::Vector2f(1.0f, 0.5f));
                         window.draw(*(_tilemapSprite[l][y][x]));
                     }
 
@@ -148,3 +151,22 @@ cout << "Tiles leidos --------" << endl;
             }
         }
     }
+
+int Tilemap::getGid(int l, int y, int x){
+    int gid = 3000;
+    y = y/(_tileheight*0.5);
+    x = x/(_tilewidth*0.5);
+
+    if( x>=1 && x<=49 && y>=0 && y<=14 ){
+        int layer0 = _tilemap[0][y][x];
+        int layer1 = _tilemap[1][y][x];
+        /*cout << "gid layer 0 " << layer0 << " for position x:" << x << " y:" << y << endl;
+        cout << "gid layer 1 " << layer1 << " for position x:" << x << " y:" << y << endl;*/
+        gid = layer1;
+    }else{
+        //cout << "Wrong x and y: " << x << ", " << y << endl;
+        gid=15;
+    }
+
+    return gid;
+}

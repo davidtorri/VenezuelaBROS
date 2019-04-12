@@ -15,6 +15,10 @@ public:
 
     void setPos(sf::Vector2f newPos);
 
+    void mover(int speed);
+
+    Bullet getBala();
+
     int getX();
 
     int getY();
@@ -25,13 +29,22 @@ public:
 
     int getVida();
 
+    void resetBala();
+
+    void dispara();
+
 private:
     //sf::RectangleShape enemy;
     sf::Texture *Tenemy=NULL;
     sf::Sprite *sprite_enemy;
 
+    Bullet *bala;
 
     int vida;
+    bool disparado;
+    bool izquierda;
+    int posInicial;
+
 };
 
 #endif /* ENEMY_HPP */

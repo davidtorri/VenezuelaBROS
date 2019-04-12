@@ -16,6 +16,10 @@ public:
 
     void move(sf::Vector2f dir);
 
+    void CalcularSprite();
+
+    Bullet getBala();
+
     int getX();
 
     int getY();
@@ -26,6 +30,8 @@ public:
 
     void draw(sf::RenderWindow &window, float);
 
+    bool getBalaActivada();
+
     //En esta funcion de hace una llamada a la Ulti, la cual en cuanto llegue a la posicion actualdel personaje
     //eliminara a todos los enemigos y civiless que encuentre en el mapa
     void OTAN();
@@ -34,6 +40,8 @@ public:
     //y se dibujara un sprite del muro en dicho lugar
     void Muro(bool derecha);
 
+    void dispara(bool derecha);
+
     void ReseteaMuro();
 
     void ResetPosOtan();
@@ -41,6 +49,8 @@ public:
     void ResetPosBombas();
 
     void setPetroleo();
+
+    void resetBala();
 
     void CreaSpriteOtan();
 
@@ -59,6 +69,10 @@ private:
     sf::Vector2f pos_anteriorOTAN;
     sf::Vector2f pos_nuevaOTAN;
 
+    sf::IntRect SpriteRight[6];
+    sf::IntRect SpriteLeft[6];
+    sf::IntRect SpriteDefault;
+
     bool interpolando = false;
 
    // sf::RectangleShape player;
@@ -74,13 +88,17 @@ private:
     sf::Texture *Tbomba=NULL;
     sf::Sprite *sprite_bomba;
 
+    Bullet *bala;
     std::vector<sf::Sprite> bombas;
 
     int petroleo;
     int vida;
+    int velocidad;
     bool muroPuesto;
     bool otandisponible;
     bool llamada;
+    bool disparado;
+    bool disparoDerecha;
 
     void moveOtan(sf::Vector2f dir);
     void moveBomba();

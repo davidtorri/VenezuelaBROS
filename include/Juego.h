@@ -31,6 +31,7 @@ class Juego
 
 
         int estado = 1;
+        int gid_pos;
         void crearVentana();
         void cargarCamara();
         void cargarPlayer();
@@ -39,7 +40,6 @@ class Juego
         void cargarMapa();
 
         void bucleJuego();
-
 
         int right = 600;
         int left = 150;
@@ -62,6 +62,7 @@ class Juego
 
         Player* player; // Juego principal
         Enemy* enemy;   // Enemigo principal
+        Enemy* enemy2;  // Enemigo dos
         Civil* civil;   // Personaje NPC del juego
         Tilemap* map1;  // Mapa del juego
         //Camara* camara;
@@ -70,15 +71,21 @@ class Juego
         std::vector<Bullet> bulletVec;
         std::vector<Bullet> bulletVecEnemy;
 
+
         //Variables para controlar el disparo y algo raro de la derecha
         bool isFiring = false;
         bool derecha  = true;
         bool firstTime;
 
+        double jesustonto;
+
+
         //============================
         //  Relojes
         //============================
         sf::Clock cd;           // Cooldown del muro
+        sf::Clock cd2;          // Cooldown de la bala
+        sf::Clock cd3;          // Cooldown de la bala del enemigo
         sf::Clock render_time;  // Reloj que controla la velocidad del render (default 120fps)
         sf::Clock update_time;  // Reloj que controla la velocidad del update (default 15 fps)
 

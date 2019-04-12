@@ -13,19 +13,23 @@ Player::Player(sf::Vector2f size) {
     //actualmente esta a TRUE simplemente para probar el funcionamiento pero debera estas a false
     otandisponible = true;
     llamada = false;
+    disparado = false;
     petroleo = 0;
+    velocidad = 0;
     vida = kVida;
-
+    velocidad = 0;
     Tplayer = new sf::Texture();
 
     Tmuro = new sf::Texture();
 
 
-    Tplayer->loadFromFile("resources/sprites.png");
+    Tplayer->loadFromFile("resources/trump.png");
     sprite_player= new sf::Sprite(*Tplayer);
 
-    Tmuro->loadFromFile("resources/PixelAtlas.png");
+    Tmuro->loadFromFile("resources/muro.jpg");
     sprite_muro = new sf::Sprite(*Tmuro);
+
+    bala = new Bullet(sf::Vector2f(50,50),0);
 
 
     //Le pongo el centroide donde corresponde
@@ -34,26 +38,42 @@ Player::Player(sf::Vector2f size) {
 
     //Cojo el sprite que me interesa por defecto del sheet
     sprite_player->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
-    sprite_player->setScale(0.5,0.5);
+    sprite_player->setScale(0.55,0.55);
 
     sprite_muro->setTextureRect(sf::IntRect(0*75,0*75,75,75));
     sprite_muro->setScale(0.25,0.75);
 
     // Lo dispongo en el centro de la pantalla
-    sprite_player->setPosition(323, 146);
+    sprite_player->setPosition(size);
 
     //Declaramos las posiciones
-     pos_anterior = sf::Vector2f(323,146);
-     pos_nueva = sf::Vector2f(323,146);
+     pos_anterior = sf::Vector2f(size);
+     pos_nueva = sf::Vector2f(size);
 
+
+          //Construit Sprites
+     SpriteDefault = sf::IntRect(0, 0, 100, 100);
+
+     for(int i = 0; i < 5; i ++){
+        SpriteRight[i] = sf::IntRect(i*100, 1*100, 100, 100);
+        SpriteLeft[i] = sf::IntRect(i*100, 3*100, 100, 100);
+
+     //Construit Sprites
+     SpriteDefault = sf::IntRect(0, 0, 100, 100);
+     for(int i = 0; i < 5; i ++)
+     {
+     SpriteRight[i] = sf::IntRect(i*100, 1*100, 100, 100);
+     SpriteLeft[i] = sf::IntRect(i*100, 3*100, 100, 100);
+     }
 }
-
+}
 
 Player::~Player() {
     delete[] sprite_player;
     delete[] sprite_muro;
     delete[] sprite_otan;
     delete[] sprite_bomba;
+    delete bala;
 }
 
 int Player::getVida(){
@@ -72,12 +92,44 @@ int Player::getPetroleo(){
     return sprite_player->getPosition().y;
  }
 
+ Bullet Player::getBala(){
+    return *bala;
+ }
+
+ bool Player::getBalaActivada(){
+    if(disparado == true){
+        return true;
+    }
+    else
+        return false;
+}
+
+void Player::CalcularSprite(){
+
+
+ if (pos_anterior.x > pos_nueva.x ){
+      sprite_player->setTextureRect(SpriteLeft[velocidad%5]);
+      velocidad++;
+     }
+     if (pos_anterior.x < pos_nueva.x ){
+      sprite_player->setTextureRect(SpriteRight[velocidad%5]);
+      velocidad++;
+     }
+    if (pos_anterior.x == pos_nueva.x ){
+      sprite_player->setTextureRect(SpriteDefault);
+      velocidad=0;
+     }
+}
+
  void Player::move(sf::Vector2f dir){
 
      pos_anterior = pos_nueva; // La anterior es la que era nueva
      pos_nueva += dir;         // Actualiza la posición nueva
      interpolando = true;      // Estamos interpolando
- }
+
+     CalcularSprite();
+}
+
 
 //ademas este metodo se encargará de comprobar que cuadno salga por pantalla el avion ya no exista
  void Player::moveOtan(sf::Vector2f dir){
@@ -90,12 +142,10 @@ int Player::getPetroleo(){
  void Player::moveBomba(){
     //variable auxiliar para actualizar posicion X de cada bomba, asi no se tiraran todas en el mismo lugar
     int actu = -50;
-
     //Actualizo la posicion X de la bomba con respecto al avio
     //y la Y con respecto a la posicion anterior de la propia bomba
     for(int p  = 0; p<10;p++){
         bombas[p].setPosition(sprite_otan->getPosition().x+actu,bombas[p].getPosition().y+1.5);
-
         actu = actu+75;
     }
  }
@@ -118,6 +168,15 @@ int Player::getPetroleo(){
     }
 
  }
+
+void Player::dispara(bool derecha){
+    if(!disparado)
+    {
+        bala->setPos(sprite_player->getPosition());
+        disparado = true;
+        disparoDerecha = derecha;
+    }
+}
 
 //implementacio no definitiva hay que tener en cuenta cuando y como vamos a llamar a este metodo
  void Player::setPetroleo(){
@@ -200,12 +259,18 @@ int Player::getPetroleo(){
 
 void Player::checkColl(Bullet bullet){
 
-        if(bullet.getRight() > sprite_player->getPosition().x &&
-           bullet.getTop() < sprite_player->getPosition().y ){
+        sf::FloatRect posicion(bullet.getPositionSprite(),{32,32});
+
+        if(sprite_player->getGlobalBounds().intersects(posicion)){
+            std::cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << std::endl;
             vida = vida - bullet.getDmg();
             //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
-
         }
+}
+
+void Player::resetBala(){
+    disparado = false;
+
 }
 
  void Player::draw(sf::RenderWindow& window, float porcentaje_interpolacion){
@@ -223,6 +288,14 @@ void Player::checkColl(Bullet bullet){
 
      if(muroPuesto)
         window.draw(*sprite_muro);
+
+    if(disparado){
+        bala->draw(window);
+        if(disparoDerecha)
+            bala->fire(7);
+        else
+            bala->fire(-7);
+    }
 
      if(llamada) {
         moveOtan(sf::Vector2f(5, 0));
