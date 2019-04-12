@@ -29,6 +29,8 @@ public:
 
     void dispara();
 
+    void mover(int speed);
+
 private:
     //sf::RectangleShape enemy;
     sf::Texture *Tenemy=NULL;
@@ -36,8 +38,19 @@ private:
 
     Bullet *bala;
 
+
+    sf::IntRect SpriteRight[8];
+    sf::IntRect SpriteLeft[8];
+    //sf::IntRect SpriteRight[5];
+    //sf::IntRect SpriteLeft[5];
+    sf::IntRect SpriteDefault;
+
     int vida;
     bool disparado;
+    bool izquierda;
+    int posInicial;
+    int velocidadSprite;
+
 
 };
 

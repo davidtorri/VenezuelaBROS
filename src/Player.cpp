@@ -49,21 +49,13 @@ Player::Player(sf::Vector2f size) {
      pos_nueva = sf::Vector2f(200,160);
 
 
-          //Construit Sprites
+    //Construit Sprites
      SpriteDefault = sf::IntRect(0, 0, 100, 100);
 
      for(int i = 0; i < 5; i ++){
         SpriteRight[i] = sf::IntRect(i*100, 1*100, 100, 100);
         SpriteLeft[i] = sf::IntRect(i*100, 3*100, 100, 100);
-
-     //Construit Sprites
-     SpriteDefault = sf::IntRect(0, 0, 100, 100);
-     for(int i = 0; i < 5; i ++)
-     {
-     SpriteRight[i] = sf::IntRect(i*100, 1*100, 100, 100);
-     SpriteLeft[i] = sf::IntRect(i*100, 3*100, 100, 100);
-     }
-}
+    }
 }
 
 Player::~Player() {
@@ -93,11 +85,11 @@ void Player::CalcularSprite(){
 
 
  if (pos_anterior.x > pos_nueva.x ){
-      sprite_player->setTextureRect(SpriteLeft[velocidad%6]);
+      sprite_player->setTextureRect(SpriteLeft[velocidad%5]);
       velocidad++;
      }
      if (pos_anterior.x < pos_nueva.x ){
-      sprite_player->setTextureRect(SpriteRight[velocidad%6]);
+      sprite_player->setTextureRect(SpriteRight[velocidad%5]);
       velocidad++;
      }
     if (pos_anterior.x == pos_nueva.x ){
