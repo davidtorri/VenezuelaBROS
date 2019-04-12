@@ -6,13 +6,14 @@
 
 using namespace tinyxml2;
 using namespace std;
+using namespace sf;
 
-class Tilemap : public sf::Drawable, public sf::Transformable
+class Tilemap : public Drawable, public Transformable
 {
 public:
 
     Tilemap(const char* tmxFile);
-    void draw(sf::RenderWindow &window);
+    void draw(RenderWindow &window);
 
     XMLDocument doc;
     XMLElement *map;
@@ -26,22 +27,22 @@ public:
     int posX = 0;
     int posY = 0;
     int ***_tilemap;
-    sf::Sprite *_tilesetSprite;
+    Sprite *_tilesetSprite;
     XMLElement *layer;
     const char *foldersrc = "resources/";
     int getGid(int l, int y, int x);
 
 private:
 
-    sf::Texture m_tileset;
-    sf::VertexArray m_vertices;
-    sf::Sprite ****_tilemapSprite;
-    sf::Texture _tilesetTexture;
+    Texture m_tileset;
+    VertexArray m_vertices;
+    Sprite ****_tilemapSprite;
+    Texture _tilesetTexture;
     int _width;
     int _height;
     int _numLayers;
 
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
+    virtual void draw(RenderTarget& target, RenderStates states) const
     {
         // apply the transform
         states.transform *= getTransform();

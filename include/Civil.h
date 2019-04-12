@@ -4,18 +4,21 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+using namespace std;
+using namespace sf;
+
 class Civil
 {
     public:
-        Civil(sf::Vector2f size);
+        Civil(Vector2f size);
          ~Civil();
 
-        void draw(sf::RenderWindow &window);
+        void draw(RenderWindow &window);
 
         int getVida();
     private:
-        sf::Texture *Tcivil=NULL;
-        sf::Sprite *sprite_civil;
+        Texture *Tcivil=NULL;
+        Sprite *sprite_civil;
 
         int vida;
 };

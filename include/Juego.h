@@ -11,6 +11,10 @@
 #include "Juego.h"
 #include "Camara.h"
 #include "Civil.h"
+
+using namespace std;
+using namespace sf;
+
 //version con cd
 class Juego
 {
@@ -44,9 +48,9 @@ class Juego
         int right = 600;
         int left = 150;
 
-         sf::RenderWindow window;
-        sf::View view1;
-        sf::View view2;
+        RenderWindow window;
+        View view1;
+        View view2;
 
 
 
@@ -58,7 +62,7 @@ class Juego
         void Update();       // Actualiza las condiciones del juego (todo)
         void Render(float);  // Renderiza todos los sprites
         void processEvents();  // Captura y procesa eventos
-        void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);  // Maneja eventos
+        void handlePlayerInput(Keyboard::Key key, bool isPressed);  // Maneja eventos
 
         Player* player; // Juego principal
         Enemy* enemy;   // Enemigo principal
@@ -68,8 +72,8 @@ class Juego
         //Camara* camara;
 
         //Arrays dinmicos para gestionar las balas del juego
-        std::vector<Bullet> bulletVec;
-        std::vector<Bullet> bulletVecEnemy;
+        vector<Bullet> bulletVec;
+        vector<Bullet> bulletVecEnemy;
 
 
         //Variables para controlar el disparo y algo raro de la derecha
@@ -83,11 +87,11 @@ class Juego
         //============================
         //  Relojes
         //============================
-        sf::Clock cd;           // Cooldown del muro
-        sf::Clock cd2;          // Cooldown de la bala
-        sf::Clock cd3;          // Cooldown de la bala del enemigo
-        sf::Clock render_time;  // Reloj que controla la velocidad del render (default 120fps)
-        sf::Clock update_time;  // Reloj que controla la velocidad del update (default 15 fps)
+        Clock cd;           // Cooldown del muro
+        Clock cd2;          // Cooldown de la bala
+        Clock cd3;          // Cooldown de la bala del enemigo
+        Clock render_time;  // Reloj que controla la velocidad del render (default 120fps)
+        Clock update_time;  // Reloj que controla la velocidad del update (default 15 fps)
 
         //Eventos
         bool			isMovingUp;

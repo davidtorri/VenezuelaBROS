@@ -6,14 +6,17 @@
 
 #include "Bullet.h"
 
+using namespace std;
+using namespace sf;
+
 
 class Enemy{
 public:
-    Enemy(sf::Vector2f size);
+    Enemy(Vector2f size);
 
     ~Enemy();
 
-    void setPos(sf::Vector2f newPos);
+    void setPos(Vector2f newPos);
 
     void mover(int speed);
 
@@ -25,7 +28,7 @@ public:
 
     void checkColl(Bullet bullet);
 
-    void draw(sf::RenderWindow &window);
+    void draw(RenderWindow &window);
 
     int getVida();
 
@@ -35,8 +38,8 @@ public:
 
 private:
     //sf::RectangleShape enemy;
-    sf::Texture *Tenemy=NULL;
-    sf::Sprite *sprite_enemy;
+    Texture *Tenemy=NULL;
+    Sprite *sprite_enemy;
 
     Bullet *bala;
 

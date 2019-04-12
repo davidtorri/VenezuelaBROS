@@ -2,15 +2,15 @@
 #include <SFML/Graphics.hpp>
 #include "Bullet.h"
 
-Bullet::Bullet(sf::Vector2f size,int tipo){
+Bullet::Bullet(Vector2f size,int tipo){
 
-    Tbullet= new sf::Texture();
+    Tbullet= new Texture();
 
     //Es una bala del player
     if(tipo == 0){
 
         Tbullet->loadFromFile("resources/eeuu.png");
-        sprite_bullet= new sf::Sprite(*Tbullet);
+        sprite_bullet= new Sprite(*Tbullet);
         //Le pongo el centroide donde corresponde
         sprite_bullet->setOrigin(130/2,40/2);
         //Cojo el sprite que me interesa por defecto del sheet
@@ -23,11 +23,11 @@ Bullet::Bullet(sf::Vector2f size,int tipo){
     //Es una bala del enemigo
     else{
         Tbullet->loadFromFile("resources/plane.png");
-        sprite_bullet= new sf::Sprite(*Tbullet);
+        sprite_bullet= new Sprite(*Tbullet);
         //Le pongo el centroide donde corresponde
         sprite_bullet->setOrigin(130/2,40/2);
         //Cojo el sprite que me interesa por defecto del sheet
-        sprite_bullet->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
+        sprite_bullet->setTextureRect(IntRect(0*75, 0*75, 75, 75));
         sprite_bullet->setScale(1,1);
         // Lo dispongo en el centro de la pantalla
         sprite_bullet->setPosition(323, 160);
@@ -65,14 +65,14 @@ int Bullet::getDmg(){
     return dmg;
 }
 
-const sf::Vector2f Bullet::getPositionSprite(){
+const Vector2f Bullet::getPositionSprite(){
     return sprite_bullet->getPosition();
 }
 
-void Bullet::draw(sf::RenderWindow &window){
+void Bullet::draw(RenderWindow &window){
     window.draw(*sprite_bullet);
 }
 
-void Bullet::setPos(sf::Vector2f newPos){
+void Bullet::setPos(Vector2f newPos){
     sprite_bullet->setPosition(newPos);
 }

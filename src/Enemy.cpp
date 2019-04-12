@@ -4,24 +4,24 @@
 
 #define kVida 30
 
-Enemy::Enemy(sf::Vector2f size) {
+Enemy::Enemy(Vector2f size) {
 
     vida = kVida;
 
     disparado = false;
 
-    Tenemy= new sf::Texture();
+    Tenemy= new Texture();
 
     Tenemy->loadFromFile("resources/soldier.png");
-    sprite_enemy= new sf::Sprite(*Tenemy);
+    sprite_enemy= new Sprite(*Tenemy);
 
-    bala = new Bullet(sf::Vector2f(50,50),1);
+    bala = new Bullet(Vector2f(50,50),1);
 
 
     //Le pongo el centroide donde corresponde
     sprite_enemy->setOrigin(75/2,75/2);
     //Cojo el sprite que me interesa por defecto del sheet
-    sprite_enemy->setTextureRect(sf::IntRect(1*75, 1*75, 75, 75));
+    sprite_enemy->setTextureRect(IntRect(1*75, 1*75, 75, 75));
     sprite_enemy->setScale(0.75,0.75);
     // Lo dispongo en el centro de la pantalla
     sprite_enemy->setPosition(size);
@@ -35,9 +35,10 @@ Enemy::Enemy(sf::Vector2f size) {
 
 Enemy::~Enemy() {
     //esto es el destructor
-
-    delete[] sprite_enemy;
+    delete sprite_enemy;
+    sprite_enemy = NULL;
     delete bala;
+    bala = NULL;
 }
 
 void Enemy::mover(int speed){
@@ -66,7 +67,7 @@ int Enemy::getY(){
     return sprite_enemy->getPosition().y;
 }
 
-void Enemy::setPos(sf::Vector2f newPos){
+void Enemy::setPos(Vector2f newPos){
         sprite_enemy->setPosition(newPos);
 }
 
@@ -93,7 +94,7 @@ void Enemy::checkColl(Bullet bullet){
         }
 }
 
-void Enemy::draw(sf::RenderWindow &window){
+void Enemy::draw(RenderWindow &window){
 
     if(vida > 0)
         window.draw(*sprite_enemy);

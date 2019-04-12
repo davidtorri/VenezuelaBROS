@@ -4,9 +4,12 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+using namespace std;
+using namespace sf;
+
 class Bullet{
 public:
-    Bullet(sf::Vector2f size,int tipo);
+    Bullet(Vector2f size,int tipo);
 
     ~Bullet();
 
@@ -22,16 +25,16 @@ public:
 
     int getDmg();
 
-    const sf::Vector2f getPositionSprite();
+    const Vector2f getPositionSprite();
 
-    void draw(sf::RenderWindow &window);
+    void draw(RenderWindow &window);
 
-    void setPos(sf::Vector2f newPos);
+    void setPos(Vector2f newPos);
 
 private:
     //sf::RectangleShape sprite_bullet;
-    sf::Texture *Tbullet;
-    sf::Sprite *sprite_bullet;
+    Texture *Tbullet;
+    Sprite *sprite_bullet;
 
     int dmg;
 

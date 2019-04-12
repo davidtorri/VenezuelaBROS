@@ -4,19 +4,19 @@
 
 #define kVida 10
 
-Civil::Civil(sf::Vector2f size)
+Civil::Civil(Vector2f size)
 {
     vida = kVida;
 
-    Tcivil = new sf::Texture();
+    Tcivil = new Texture();
 
     Tcivil->loadFromFile("resources/civil.png");
-    sprite_civil= new sf::Sprite(*Tcivil);
+    sprite_civil= new Sprite(*Tcivil);
 
     //Le pongo el centroide donde corresponde
     sprite_civil->setOrigin(75/2,75/2);
     //Cojo el sprite que me interesa por defecto del sheet
-    sprite_civil->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
+    sprite_civil->setTextureRect(IntRect(0*75, 0*75, 75, 75));
     sprite_civil->setScale(0.5,0.5);
     // Lo dispongo en el centro de la pantalla
     sprite_civil->setPosition(size);
@@ -27,7 +27,7 @@ Civil::~Civil()
     delete[] sprite_civil;
 }
 
-void Civil::draw(sf::RenderWindow &window){
+void Civil::draw(RenderWindow &window){
 
     window.draw(*sprite_civil);
 }

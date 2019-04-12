@@ -7,10 +7,11 @@
 Juego* Juego::unica_instancia = 0;
 
 Juego::Juego(){
-isMovingDown=false;
-isMovingUp=false;
-isMovingRight=false;
-isMovingLeft=false;
+
+    isMovingDown=false;
+    isMovingUp=false;
+    isMovingRight=false;
+    isMovingLeft=false;
 
 }
 
@@ -21,29 +22,29 @@ Juego::~Juego()
 
 void Juego::cargarCamara(){
 
-    view1.reset(sf::FloatRect(200.f, 200.f, 300.f, 200.f));
+    view1.reset(FloatRect(200.f, 200.f, 300.f, 200.f));
 
 
-    view2.setCenter(sf::Vector2f(350.f, 120.f));
-    view2.setSize(sf::Vector2f(600.f, 300.f));
+    view2.setCenter(Vector2f(350.f, 120.f));
+    view2.setSize(Vector2f(600.f, 300.f));
 
   //camara = new Camara();
 }
 
 void Juego::cargarEnemy(){
 
-    enemy = new Enemy(sf::Vector2f(400,133));
+    enemy = new Enemy(Vector2f(400,133));
 
-    enemy2 = new Enemy(sf::Vector2f(556,56));
+    enemy2 = new Enemy(Vector2f(556,56));
 
 }
 
 void Juego::cargarCivil(){
-    civil = new Civil(sf::Vector2f(50,160));
+    civil = new Civil(Vector2f(50,160));
 }
 
 void Juego::cargarPlayer(){
-	player = new Player(sf::Vector2f(93, 133));
+	player = new Player(Vector2f(93, 133));
 }
 
 void Juego::cargarMapa(){
@@ -52,7 +53,7 @@ void Juego::cargarMapa(){
 }
 
 void Juego::crearVentana(){
-	window.create(sf::VideoMode(800, 480), "This is America v.1.0");
+	window.create(VideoMode(800, 480), "This is America v.1.0");
     window.setKeyRepeatEnabled(true);
     cout << "VENTANA" << endl;
 }
@@ -67,10 +68,6 @@ void Juego::bucleJuego(){
 
         processEvents();
 
-       /* double jesustontito = update_time.getElapsedTime().asSeconds();
-
-        jesustonto = jesustontito;*/
-
         if(update_time.getElapsedTime().asSeconds() >= UPDATE_TIME)
         {
             Update();
@@ -81,7 +78,7 @@ void Juego::bucleJuego(){
 
         // Fracción entre tiempo transcurrido hasta el siguiente update / tiempo
         // que hay entre updates
-        tiempo_acumulado_update = std::min(1.f, update_time.getElapsedTime().asSeconds()/UPDATE_TIME);
+        tiempo_acumulado_update = min(1.f, update_time.getElapsedTime().asSeconds()/UPDATE_TIME);
 
         //Renderiza todo el juego
         if(render_time.getElapsedTime().asSeconds() >= RENDER_TIME)
@@ -105,7 +102,9 @@ void Juego::Update()
     cout << "PlayerX"<< player->getX() << endl;
     cout << "PlayerY"<< player->getY() << endl;
     cout << "Player Vida"<<player->getVida() <<endl;
-    cout << "Enemy Vida"<< enemy->getVida() <<endl;
+
+    if(enemy!=NULL)
+        cout << "Enemy Vida"<< enemy->getVida() <<endl;
 
 
     //window.setView(camara->returnview());
@@ -147,7 +146,7 @@ void Juego::Update()
                 }
             }
 
-            vel = sf::Vector2f(horiz,vertic);
+            vel = Vector2f(horiz,vertic);
 
             player->move(vel);
         }
@@ -222,20 +221,20 @@ void Juego::Render(float tiempo_fraccion)
 
 void Juego::processEvents()   //Captura y procesa eventos
 {
-	sf::Event event;
+	Event event;
 	while (window.pollEvent(event))
 	{
 		switch (event.type)
 		{
-			case sf::Event::KeyPressed:
+			case Event::KeyPressed:
 				handlePlayerInput(event.key.code, true);
 				break;
 
-			case sf::Event::KeyReleased:
+			case Event::KeyReleased:
 				handlePlayerInput(event.key.code, false);
 				break;
 
-			case sf::Event::Closed:
+			case Event::Closed:
 				window.close();
 				break;
 		}
@@ -243,15 +242,15 @@ void Juego::processEvents()   //Captura y procesa eventos
 }
 
 // Realiza las operaciones correspondientes a cada Evento
-void Juego::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
+void Juego::handlePlayerInput(Keyboard::Key key, bool isPressed)
 {
-	if (key == sf::Keyboard::Up) {           //Traslaciones
+	if (key == Keyboard::Up) {           //Traslaciones
 		isMovingUp = isPressed;
     }
-	else if (key == sf::Keyboard::Down){
+	else if (key == Keyboard::Down){
 		//isMovingDown = isPressed;
     }
-	else if (key == sf::Keyboard::Left){
+	else if (key == Keyboard::Left){
         derecha=false;
 		isMovingLeft = isPressed;
 		if(player->getX() <= left){
@@ -260,7 +259,7 @@ void Juego::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
                     left -= kVel;
         }
     }
-	else if (key == sf::Keyboard::Right){
+	else if (key == Keyboard::Right){
         derecha=true;
 		isMovingRight = isPressed;
 		if(player->getX() >= right){
@@ -269,19 +268,19 @@ void Juego::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)
                         right += kVel;
         }
     }
-    else if (key == sf::Keyboard::R){
+    else if (key == Keyboard::R){
      player->OTAN();
     }
-    else if (key == sf::Keyboard::Space){
+    else if (key == Keyboard::Space){
     isFiring=true;
     cd2.restart();
     }
-    else if (key == sf::Keyboard::Q){
+    else if (key == Keyboard::Q){
      player->Muro(derecha);
      cd.restart();
     }
 
-	else if (key == sf::Keyboard::X && isPressed){
+	else if (key == Keyboard::X && isPressed){
 
 
 	}

@@ -28,7 +28,7 @@ Tilemap::Tilemap(const char* tmxFile){
 
         _tilesetTexture.loadFromFile(result);
 
-        _tilesetSprite = new sf::Sprite[_tilecount];
+        _tilesetSprite = new Sprite[_tilecount];
 
         for(int i = 0; i < _tilecount; i++){
             cout << "PosX: " << posX << " - PosY: " << posY << " - width: " << _tilewidth << " - height: " << _tileheight << endl;
@@ -59,14 +59,14 @@ Tilemap::Tilemap(const char* tmxFile){
 
         _tilemapSprite = new sf::Sprite***[_numLayers];
         for (int l = 0; l < _numLayers; l++){
-            _tilemapSprite[l] = new sf::Sprite**[_height];
+            _tilemapSprite[l] = new Sprite**[_height];
         }
 
         for(int l=0; l < _numLayers; l++){
             for(int y = 0; y < _height; y++){
-                _tilemapSprite[l][y] = new sf::Sprite*[_width];
+                _tilemapSprite[l][y] = new Sprite*[_width];
                 for(int x= 0; x<_width; x++){
-                    _tilemapSprite[l][y][x] = new sf::Sprite();
+                    _tilemapSprite[l][y][x] = new Sprite();
                 }
             }
         }
@@ -123,7 +123,7 @@ cout << "Tiles leidos --------" << endl;
                     //cout << "Executing " << l << " " << y << " " << x << " gid: " << gid << endl;
                     if(gid !=NULL && gid>dif-1){
                         //cout << "Gid things 1" << endl;
-                    	_tilemapSprite[l][y][x] = new sf::Sprite(_tilesetTexture, _tilesetSprite[gid].getTextureRect());
+                    	_tilemapSprite[l][y][x] = new Sprite(_tilesetTexture, _tilesetSprite[gid].getTextureRect());
                     	//cout << "Gid things 2" << endl;
                         _tilemapSprite[l][y][x]->setPosition(x*(_tilewidth/2), y*(_tileheight/2));
                         //cout << "Gid things done" << endl;
@@ -143,7 +143,7 @@ cout << "Tiles leidos --------" << endl;
                 for(int x = 0; x < _width; x++){
 
                     if(_tilemapSprite[l][y][x] != NULL){
-                        _tilemapSprite[l][y][x]->setScale(sf::Vector2f(1.0f, 0.5f));
+                        _tilemapSprite[l][y][x]->setScale(Vector2f(1.0f, 0.5f));
                         window.draw(*(_tilemapSprite[l][y][x]));
                     }
 
