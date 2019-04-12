@@ -184,18 +184,12 @@ void Juego::Update()
         if(player->getBalaActivada())
             enemy->checkColl(player->getBala());
     }
-    else{
-        delete enemy;
-    }
 
     if(enemy2!=NULL){
         if(enemy2->getX() - player->getX() < 150)
             enemy2->dispara();
         if(player->getBalaActivada())
             enemy2->checkColl(player->getBala());
-    }
-    else{
-        delete enemy2;
     }
 }
 
