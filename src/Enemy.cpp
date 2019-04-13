@@ -21,12 +21,17 @@ Enemy::Enemy(Vector2f size) {
     //Le pongo el centroide donde corresponde
     sprite_enemy->setOrigin(75/2,75/2);
     //Cojo el sprite que me interesa por defecto del sheet
-    sprite_enemy->setTextureRect(IntRect(1*75, 1*75, 75, 75));
+    sprite_enemy->setTextureRect(IntRect(1*45, 3*50, 45, 50));
     sprite_enemy->setScale(0.75,0.75);
     // Lo dispongo en el centro de la pantalla
     sprite_enemy->setPosition(size);
 
     bool izquierda = true;
+
+    int Spritevelocidad = 0;
+    for(int i = 0; i < 6; i ++){
+        SpriteArray[i] = IntRect(i*45, 3*50, 45, 50);
+    }
 
     //debe ser la misma coordenada X en la que se genera el enemigo
     posInicial = size.x;
@@ -99,10 +104,24 @@ void Enemy::draw(RenderWindow &window){
 
     if(vida > 0)
         window.draw(*sprite_enemy);
+
+        if(Spritevelocidad < 1)
+        {
+        Spritevelocidad = 0;
+        }
+        Spritevelocidad++;
         if(izquierda)
-            mover(-1);
+           {
+           mover(-1);
+            sprite_enemy->setTextureRect(SpriteArray[Spritevelocidad%6]);
+            sprite_enemy->setScale(-0.7,0.7);
+           }
         else if(!izquierda)
-            mover(1);
+            {
+           mover(1);
+            sprite_enemy->setTextureRect(SpriteArray[Spritevelocidad%6]);
+            sprite_enemy->setScale(0.7,0.7);
+           }
 
     if(disparado && vida > 0){
         bala->draw(window);

@@ -10,14 +10,14 @@ Civil::Civil(Vector2f size)
 
     Tcivil = new Texture();
 
-    Tcivil->loadFromFile("resources/civil.png");
+    Tcivil->loadFromFile("resources/civil-min.png");
     sprite_civil= new Sprite(*Tcivil);
 
     //Le pongo el centroide donde corresponde
     sprite_civil->setOrigin(75/2,75/2);
     //Cojo el sprite que me interesa por defecto del sheet
-    sprite_civil->setTextureRect(IntRect(0*75, 0*75, 75, 75));
-    sprite_civil->setScale(0.5,0.5);
+    sprite_civil->setTextureRect(IntRect(0*132, 3*120, 132, 120));
+    sprite_civil->setScale(0.3,0.3);
     // Lo dispongo en el centro de la pantalla
     sprite_civil->setPosition(size);
 }

@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="include/Enemy.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Enemy.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="543" topLine="17" />
+			<Cursor1 position="530" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/Player.cpp" open="1" top="1" tabpos="14" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5112" topLine="201" />
-		</Cursor>
-	</File>
-	<File name="include/Tilemap.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="909" topLine="21" />
-		</Cursor>
-	</File>
-	<File name="src/Juego.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4813" topLine="146" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="257" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/Tilemap.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2282" topLine="50" />
-		</Cursor>
-	</File>
-	<File name="src/Enemy.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="798" topLine="12" />
-		</Cursor>
-	</File>
-	<File name="include/Civil.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="317" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src/tinyxml2.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/tinyxml2.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="70173" topLine="2761" />
 		</Cursor>
 	</File>
-	<File name="include/Bullet.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/Tilemap.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="909" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="src/Tilemap.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2282" topLine="50" />
+		</Cursor>
+	</File>
+	<File name="include/Enemy.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="637" topLine="19" />
+		</Cursor>
+	</File>
+	<File name="include/Juego.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2293" topLine="68" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="257" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include/Bullet.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="315" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/Civil.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include/Player.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="651" topLine="0" />
+			<Cursor1 position="1757" topLine="71" />
 		</Cursor>
 	</File>
-	<File name="src/Bullet.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/Juego.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="672" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="include/Civil.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="200" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src/Player.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4232" topLine="247" />
+		</Cursor>
+	</File>
+	<File name="src/Bullet.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1943" topLine="15" />
 		</Cursor>
 	</File>
-	<File name="include/Player.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="src/Civil.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1900" topLine="72" />
-		</Cursor>
-	</File>
-	<File name="include/Juego.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2293" topLine="69" />
+			<Cursor1 position="714" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

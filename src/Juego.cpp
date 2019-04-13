@@ -31,14 +31,14 @@ void Juego::cargarCamara(){
 
 void Juego::cargarEnemy(){
 
-    enemy = new Enemy(Vector2f(400,133));
+    enemy = new Enemy(Vector2f(400,152));
 
-    enemy2 = new Enemy(Vector2f(556,56));
+    enemy2 = new Enemy(Vector2f(556,72));
 
 }
 
 void Juego::cargarCivil(){
-    civil = new Civil(Vector2f(50,160));
+    civil = new Civil(Vector2f(50,138));
 }
 
 void Juego::cargarPlayer(){

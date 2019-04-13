@@ -41,8 +41,11 @@ private:
     Texture *Tenemy=NULL;
     Sprite *sprite_enemy;
 
+    IntRect SpriteArray[6];
+
     Bullet *bala;
 
+    int Spritevelocidad;
     int vida;
     bool disparado;
     bool izquierda;
