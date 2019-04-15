@@ -42,6 +42,7 @@ class Juego
         void cargarEnemy();
         void cargarCivil();
         void cargarMapa();
+        void cargarPetroleo();
 
         void bucleJuego();
 
@@ -73,6 +74,12 @@ class Juego
         Enemy* enemy2;  // Enemigo dos
         Civil* civil;   // Personaje NPC del juego
         Tilemap* map1;  // Mapa del juego
+
+        Texture *Tpetroleo;
+        Sprite *sprite_petroleo;
+        Sprite *sprite_petroleo1;
+        Sprite *sprite_petroleo2;
+        Sprite *sprite_petroleo3;
         //Camara* camara;
 
         //Arrays dinmicos para gestionar las balas del juego
@@ -84,6 +91,7 @@ class Juego
         bool isFiring = false;
         bool derecha  = true;
         bool firstTime;
+        bool p1,p2,p3,p4;
 
         double jesustonto;
 

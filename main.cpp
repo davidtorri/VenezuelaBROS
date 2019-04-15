@@ -14,6 +14,7 @@ int main()
     juego->cargarPlayer();
     juego->cargarEnemy();
     juego->cargarCivil();
+    juego->cargarPetroleo();
     juego->cargarCamara();
     juego->bucleJuego();
 

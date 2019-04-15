@@ -11,7 +11,7 @@ Player::Player(Vector2f size) {
 
     muroPuesto = false;
     //actualmente esta a TRUE simplemente para probar el funcionamiento pero debera estas a false
-    otandisponible = true;
+    otandisponible = false;
     llamada = false;
     disparado = false;
     petroleo = 0;
@@ -25,6 +25,7 @@ Player::Player(Vector2f size) {
 
     Tplayer->loadFromFile("resources/trump.png");
     sprite_player= new Sprite(*Tplayer);
+
 
     Tmuro->loadFromFile("resources/muro.jpg");
     sprite_muro = new Sprite(*Tmuro);
@@ -213,6 +214,7 @@ void Player::dispara(bool derecha){
 
  void Player::ResetPosOtan(){
     sprite_otan->setPosition(-100,0);
+    otandisponible = false;
  }
 
  void Player::ResetPosBombas(){
@@ -264,6 +266,20 @@ bool Player::checkColl(Bullet bullet){
         if(sprite_player->getGlobalBounds().intersects(posicion)){
             cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << endl;
             vida = vida - bullet.getDmg();
+            return true;
+            //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
+        }
+        else{
+            return false;
+        }
+}
+
+bool Player::checkCollPetroleo(Sprite pet){
+
+        sf::FloatRect posicion(sprite_player->getPosition(),{32,32});
+
+        if(pet.getGlobalBounds().intersects(posicion)){
+            //vida = vida - bullet.getDmg();
             return true;
             //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
         }

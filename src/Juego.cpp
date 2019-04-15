@@ -37,6 +37,38 @@ void Juego::cargarEnemy(){
 
 }
 
+void Juego::cargarPetroleo(){
+
+        p1 = true;
+        p2 = true;
+        p3 = true;
+        p4 = true;
+
+        Tpetroleo = new Texture();
+        Tpetroleo->loadFromFile("resources/petroleo.png");
+        sprite_petroleo= new Sprite(*Tpetroleo);
+        sprite_petroleo->setOrigin(130/2,40/2);
+        sprite_petroleo->setScale(0.04,0.04);
+        sprite_petroleo->setPosition(500, 143);
+
+        sprite_petroleo1= new Sprite(*Tpetroleo);
+        sprite_petroleo1->setOrigin(130/2,40/2);
+        sprite_petroleo1->setScale(0.04,0.04);
+        sprite_petroleo1->setPosition(435, 62);
+
+        sprite_petroleo2= new Sprite(*Tpetroleo);
+        sprite_petroleo2->setOrigin(130/2,40/2);
+        sprite_petroleo2->setScale(0.04,0.04);
+        sprite_petroleo2->setPosition(556, 62);
+
+        sprite_petroleo3= new Sprite(*Tpetroleo);
+        sprite_petroleo3->setOrigin(130/2,40/2);
+        sprite_petroleo3->setScale(0.04,0.04);
+        sprite_petroleo3->setPosition(759, 62);
+
+
+}
+
 void Juego::cargarCivil(){
     civil = new Civil(Vector2f(386,59));
 }
@@ -212,6 +244,24 @@ void Juego::enemigoDisparaYComprueboColisiones(){
             if(civil->checkCollCivil(player->getBala()))
                 player->setVida(-10);
     }
+
+    if(player->checkCollPetroleo(*sprite_petroleo)){
+        player->setPetroleo();
+        p1 = false;
+    }
+    if(player->checkCollPetroleo(*sprite_petroleo1)){
+        player->setPetroleo();
+        p2 = false;
+    }
+    if(player->checkCollPetroleo(*sprite_petroleo2)){
+        player->setPetroleo();
+        p3 = false;
+    }
+    if(player->checkCollPetroleo(*sprite_petroleo3)){
+        player->setPetroleo();
+        p4 = false;
+    }
+
 }
 
 void Juego::comprueboMuertes(){
@@ -226,10 +276,10 @@ void Juego::comprueboMuertes(){
         enemy2 = NULL;
     }
 
-    if(civil!=NULL && civil->getVida() <= 0){
+   // if(civil!=NULL && civil->getVida() <= 0){
         //delete civil;
         //civil = NULL;
-    }
+   // }
 
     if(player!=NULL && player->getVida() <= 0){
         delete player;
@@ -255,6 +305,15 @@ void Juego::Render(float tiempo_fraccion)
         enemy2->draw(window);
 
     civil->draw(window);
+
+    if(p1)
+        window.draw(*sprite_petroleo);
+    if(p2)
+        window.draw(*sprite_petroleo1);
+    if(p3)
+        window.draw(*sprite_petroleo2);
+    if(p4)
+        window.draw(*sprite_petroleo3);
 
     window.display();
 }

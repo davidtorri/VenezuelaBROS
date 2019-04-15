@@ -63,6 +63,8 @@ public:
 
     bool checkColl(Bullet bullet);
 
+    bool checkCollPetroleo(Sprite petroleo);
+
     void setInterpolando(bool t){interpolando = false;};
 
 private:
