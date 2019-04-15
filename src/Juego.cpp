@@ -31,21 +31,22 @@ void Juego::cargarCamara(){
 
 void Juego::cargarEnemy(){
 
-    enemy = new Enemy(Vector2f(400,133));
+    enemy = new Enemy(Vector2f(400,153));
 
-    enemy2 = new Enemy(Vector2f(556,56));
+    enemy2 = new Enemy(Vector2f(556,76));
 
 }
 
 void Juego::cargarCivil(){
-    civil = new Civil(Vector2f(50,160));
+    civil = new Civil(Vector2f(386,59));
 }
 
 void Juego::cargarPlayer(){
-	player = new Player(Vector2f(93, 133));
+	player = new Player(Vector2f(93, 130));
 }
 
 void Juego::cargarMapa(){
+	//map1 = new Tilemap("resources/mapaunacapa22.tmx");
 	map1 = new Tilemap("resources/mapaunacapa22.tmx");
    // map1->load("resources/mapaunacapa.tmx");
 }
@@ -152,6 +153,14 @@ void Juego::Update()
 
 	firstTime=false;
 
+    resetHabilidades();
+
+    enemigoDisparaYComprueboColisiones();
+
+    comprueboMuertes();
+}
+
+void Juego::resetHabilidades(){
 
     if(cd.getElapsedTime().asSeconds()>3){
         player->ReseteaMuro();
@@ -173,12 +182,20 @@ void Juego::Update()
         player->dispara(derecha);
         isFiring = false;
     }
+}
+
+void Juego::enemigoDisparaYComprueboColisiones(){
 
     if(enemy!=NULL){
         if(enemy->getX() - player->getX() < 150)
             enemy->dispara();
         if(player->getBalaActivada())
             enemy->checkColl(player->getBala());
+        //if(){
+            if(player->checkColl(enemy->getBala())){
+                enemy->resetBala();
+            }
+        //}
     }
 
     if(enemy2!=NULL){
@@ -186,7 +203,18 @@ void Juego::Update()
             enemy2->dispara();
         if(player->getBalaActivada())
             enemy2->checkColl(player->getBala());
+        if(player->checkColl(enemy2->getBala()))
+            enemy2->resetBala();
     }
+
+    if(civil!=NULL){
+        if(player->getBalaActivada())
+            if(civil->checkCollCivil(player->getBala()))
+                player->setVida(-10);
+    }
+}
+
+void Juego::comprueboMuertes(){
 
     if(enemy!=NULL && enemy->getVida() <= 0){
         delete enemy;
@@ -196,6 +224,16 @@ void Juego::Update()
     if(enemy2!=NULL && enemy2->getVida() <= 0){
         delete enemy2;
         enemy2 = NULL;
+    }
+
+    if(civil!=NULL && civil->getVida() <= 0){
+        //delete civil;
+        //civil = NULL;
+    }
+
+    if(player!=NULL && player->getVida() <= 0){
+        delete player;
+        player = NULL;
     }
 }
 

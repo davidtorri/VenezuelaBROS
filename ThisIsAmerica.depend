@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1555086043 source:/home/jaime/git_workspace/VenezuelaBROS/src/Bullet.cpp
+1555175107 source:/home/jaime/git_workspace/VenezuelaBROS/src/Bullet.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Bullet.h"
@@ -8,20 +8,20 @@
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1555087258 source:/home/jaime/git_workspace/VenezuelaBROS/src/Enemy.cpp
+1555343357 source:/home/jaime/git_workspace/VenezuelaBROS/src/Enemy.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Enemy.h"
 
-1555085841 /home/jaime/git_workspace/VenezuelaBROS/include/Enemy.h
+1555343422 /home/jaime/git_workspace/VenezuelaBROS/include/Enemy.h
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Bullet.h"
 
-1555087365 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
+1555344335 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
 	"Juego.h"
 
-1555085640 /home/jaime/git_workspace/VenezuelaBROS/include/Juego.h
+1555174146 /home/jaime/git_workspace/VenezuelaBROS/include/Juego.h
 	<sstream>
 	<iostream>
 	<SFML/Graphics.hpp>
@@ -55,7 +55,7 @@
 	<android/log.h>
 	<assert.h>
 
-1555087779 /home/jaime/git_workspace/VenezuelaBROS/include/Player.h
+1555344135 /home/jaime/git_workspace/VenezuelaBROS/include/Player.h
 	<iostream>
 	<stdlib.h>
 	<SFML/Graphics.hpp>
@@ -65,7 +65,7 @@
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1555087856 source:/home/jaime/git_workspace/VenezuelaBROS/src/Player.cpp
+1555344122 source:/home/jaime/git_workspace/VenezuelaBROS/src/Player.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Player.h"
@@ -84,11 +84,12 @@
 1555084934 source:/home/jaime/git_workspace/VenezuelaBROS/main.cpp
 	"Juego.h"
 
-1555085928 /home/jaime/git_workspace/VenezuelaBROS/include/Civil.h
+1555344208 /home/jaime/git_workspace/VenezuelaBROS/include/Civil.h
 	<iostream>
 	<SFML/Graphics.hpp>
+	"Bullet.h"
 
-1555085987 source:/home/jaime/git_workspace/VenezuelaBROS/src/Civil.cpp
+1555344384 source:/home/jaime/git_workspace/VenezuelaBROS/src/Civil.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Civil.h"

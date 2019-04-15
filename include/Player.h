@@ -59,7 +59,9 @@ public:
 
     void CreaSpriteBomba();
 
-    void checkColl(Bullet bullet);
+    void setVida(int i);
+
+    bool checkColl(Bullet bullet);
 
     void setInterpolando(bool t){interpolando = false;};
 

@@ -64,6 +64,10 @@ class Juego
         void processEvents();  // Captura y procesa eventos
         void handlePlayerInput(Keyboard::Key key, bool isPressed);  // Maneja eventos
 
+        void comprueboMuertes();
+        void enemigoDisparaYComprueboColisiones();
+        void resetHabilidades();
+
         Player* player; // Juego principal
         Enemy* enemy;   // Enemigo principal
         Enemy* enemy2;  // Enemigo dos

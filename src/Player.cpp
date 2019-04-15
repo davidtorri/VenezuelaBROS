@@ -50,8 +50,7 @@ Player::Player(Vector2f size) {
      pos_anterior = Vector2f(size);
      pos_nueva = Vector2f(size);
 
-
-          //Construit Sprites
+    //Construit Sprites
      SpriteDefault = IntRect(0, 0, 100, 100);
 
      for(int i = 0; i < 5; i ++){
@@ -61,11 +60,16 @@ Player::Player(Vector2f size) {
 }
 
 Player::~Player() {
-    delete[] sprite_player;
-    delete[] sprite_muro;
-    delete[] sprite_otan;
-    delete[] sprite_bomba;
+    delete sprite_player;
+    sprite_player = NULL;
+    delete sprite_muro;
+    sprite_muro = NULL;
+    delete sprite_otan;
+    sprite_otan = NULL;
+    delete sprite_bomba;
+    sprite_bomba = NULL;
     delete bala;
+    bala = NULL;
 }
 
 int Player::getVida(){
@@ -94,6 +98,10 @@ int Player::getPetroleo(){
     }
     else
         return false;
+}
+
+void Player::setVida(int i){
+    vida = vida - i;
 }
 
 void Player::CalcularSprite(){
@@ -249,14 +257,18 @@ void Player::dispara(bool derecha){
     }
  }
 
-void Player::checkColl(Bullet bullet){
+bool Player::checkColl(Bullet bullet){
 
         sf::FloatRect posicion(bullet.getPositionSprite(),{32,32});
 
         if(sprite_player->getGlobalBounds().intersects(posicion)){
             cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << endl;
             vida = vida - bullet.getDmg();
+            return true;
             //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
+        }
+        else{
+            return false;
         }
 }
 

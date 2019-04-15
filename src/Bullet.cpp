@@ -15,20 +15,20 @@ Bullet::Bullet(Vector2f size,int tipo){
         sprite_bullet->setOrigin(130/2,40/2);
         //Cojo el sprite que me interesa por defecto del sheet
         //sprite_bullet->setTextureRect(sf::IntRect(0*75, 0*75, 75, 75));
-        sprite_bullet->setScale(0.020,0.020);
+        sprite_bullet->setScale(0.0180,0.0180);
         // Lo dispongo en el centro de la pantalla
         sprite_bullet->setPosition(323, 160);
         dmg =  10;
     }
     //Es una bala del enemigo
     else{
-        Tbullet->loadFromFile("resources/plane.png");
+        Tbullet->loadFromFile("resources/bala2.png");
         sprite_bullet= new Sprite(*Tbullet);
         //Le pongo el centroide donde corresponde
         sprite_bullet->setOrigin(130/2,40/2);
         //Cojo el sprite que me interesa por defecto del sheet
-        sprite_bullet->setTextureRect(IntRect(0*75, 0*75, 75, 75));
-        sprite_bullet->setScale(1,1);
+        //sprite_bullet->setTextureRect(IntRect(0*75, 0*75, 75, 75));
+        sprite_bullet->setScale(0.04,0.04);
         // Lo dispongo en el centro de la pantalla
         sprite_bullet->setPosition(323, 160);
         dmg = 5;
@@ -70,7 +70,8 @@ const Vector2f Bullet::getPositionSprite(){
 }
 
 void Bullet::draw(RenderWindow &window){
-    window.draw(*sprite_bullet);
+    if(sprite_bullet!=NULL)
+        window.draw(*sprite_bullet);
 }
 
 void Bullet::setPos(Vector2f newPos){

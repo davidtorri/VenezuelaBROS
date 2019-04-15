@@ -4,6 +4,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "Bullet.h"
+
 using namespace std;
 using namespace sf;
 
@@ -15,12 +17,29 @@ class Civil
 
         void draw(RenderWindow &window);
 
+        void moverCivil(int speed);
+
+        int getX();
+
+        int getY();
+
+        void setPos(Vector2f newPos);
+
+        bool checkCollCivil(Bullet bullet);
+
+
         int getVida();
     private:
         Texture *Tcivil=NULL;
         Sprite *sprite_civil;
 
-        int vida;
+        IntRect SpriteArrayCivil[6];
+
+            int vida;
+            bool izquierda;
+            int posInicial;
+            int SpritevelocidadCivil;
+
 };
 
 #endif // CIVIL_H
