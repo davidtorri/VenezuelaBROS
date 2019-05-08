@@ -249,6 +249,8 @@ void Juego::enemigoDisparaYComprueboColisiones(){
     if(enemy2!=NULL){
         if(enemy2->getX() - player->getX() < 150)
             enemy2->dispara();
+        if(enemy2->getX() - civil->getX() < 150)
+            enemy2->dispara();
         if(player->getBalaActivada())
             enemy2->checkColl(player->getBala());
         if(player->checkColl(enemy2->getBala()))
@@ -259,6 +261,12 @@ void Juego::enemigoDisparaYComprueboColisiones(){
         if(player->getBalaActivada())
             if(civil->checkCollCivil(player->getBala()))
                 player->setVida(-10);
+
+        if(civil->checkCollCivil(enemy->getBala()))
+            civil->setVida(10);
+
+        if(civil->checkCollCivil(enemy2->getBala()))
+            civil->setVida(10);
     }
 
     if(player->checkCollPetroleo(*sprite_petroleo)){
@@ -282,7 +290,7 @@ void Juego::enemigoDisparaYComprueboColisiones(){
 
 void Juego::comprueboMuertes(){
 
-    if(enemy!=NULL && enemy->getVida() <= 0){
+    /*if(enemy!=NULL && enemy->getVida() <= 0){
         delete enemy;
         enemy = NULL;
     }
@@ -300,7 +308,7 @@ void Juego::comprueboMuertes(){
     if(player!=NULL && player->getVida() <= 0){
         delete player;
         player = NULL;
-    }
+    }*/
 }
 
 

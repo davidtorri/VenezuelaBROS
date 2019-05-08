@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Civil.h"
 
-#define kVida 30
+#define kVida 10
 
 Civil::Civil(Vector2f size)
 {
@@ -44,8 +44,12 @@ void Civil::moverCivil(int speed){
 
     if(getX() == posInicial-40)
         izquierda = false;
-    else if(getX()== posInicial +40)
-        izquierda = true;
+    /*else if(getX()== posInicial +40)
+        izquierda = true;*/
+}
+
+void Civil::setVida(int i){
+    vida = vida - i;
 }
 
 
@@ -72,9 +76,9 @@ bool Civil::checkCollCivil(Bullet bullet){
 
         if(sprite_civil->getGlobalBounds().intersects(posicion)){
             cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << endl;
-            vida = vida - bullet.getDmg();
+            cout << "Vida civil" << vida << endl;
+            //vida = vida - bullet.getDmg();
             return true;
-            //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
         }
         else{
             return false;
@@ -115,6 +119,11 @@ void Civil::draw(RenderWindow &window){
                 tmovi.restart();
             }
         }
+    }
+    else{
+        //disponemos el sprite fuera de pantalla para que no nos moleste,
+        //esto deberia hacerlo el delete borrando el sprite directamente pero no lo contemplamos
+        sprite_civil->setPosition(0,0);
     }
 
 }

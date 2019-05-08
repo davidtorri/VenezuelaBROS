@@ -23,6 +23,8 @@ class Civil
 
         int getY();
 
+        void setVida(int i);
+
         void setPos(Vector2f newPos);
 
         bool checkCollCivil(Bullet bullet);

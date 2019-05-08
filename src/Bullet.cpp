@@ -37,7 +37,10 @@ Bullet::Bullet(Vector2f size,int tipo){
 }
 
 Bullet::~Bullet() {
-    //delete[] sprite_bullet;
+/*    delete sprite_bullet;
+    sprite_bullet = NULL;
+    delete Tbullet;
+    Tbullet = NULL;*/
 }
 
 void Bullet::fire(int speed){

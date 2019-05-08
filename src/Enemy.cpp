@@ -40,12 +40,12 @@ Enemy::Enemy(Vector2f size) {
 
 
 Enemy::~Enemy() {
+    /*delete sprite_enemy;
+    sprite_enemy = NULL;
     delete Tenemy;
     Tenemy = NULL;
-    delete sprite_enemy;
-    sprite_enemy = NULL;
     delete bala;
-    bala = NULL;
+    bala = NULL;*/
 }
 
 void Enemy::mover(int speed){
@@ -85,7 +85,9 @@ void Enemy::resetBala(){
 void Enemy::dispara(){
     if(!disparado)
     {
-        bala->setPos(sprite_enemy->getPosition());
+        int posXEnemigo = getX();
+        int posYEnemigo = getY()-15;
+        bala->setPos(sf::Vector2f(posXEnemigo,posYEnemigo));
         disparado = true;
     }
 }

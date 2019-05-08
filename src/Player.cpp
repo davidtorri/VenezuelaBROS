@@ -101,7 +101,7 @@ Player::Player(Vector2f size) {
 }
 
 Player::~Player() {
-    delete sprite_player;
+    /*delete sprite_player;
     sprite_player = NULL;
     delete sprite_muro;
     sprite_muro = NULL;
@@ -110,7 +110,7 @@ Player::~Player() {
     delete sprite_bomba;
     sprite_bomba = NULL;
     delete bala;
-    bala = NULL;
+    bala = NULL;*/
 }
 
 int Player::getVida(){
@@ -134,9 +134,8 @@ int Player::getPetroleo(){
  }
 
  bool Player::getBalaActivada(){
-    if(disparado == true){
+    if(disparado == true)
         return true;
-    }
     else
         return false;
 }
