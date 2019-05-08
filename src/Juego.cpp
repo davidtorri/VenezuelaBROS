@@ -31,10 +31,6 @@ void Juego::cargarCamara(){
 
 void Juego::cargarEnemy(){
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8e3d14a043d5ca7fffb4b750af2a078862d0ce22
     enemy = new Enemy(Vector2f(400,153));
 
     enemy2 = new Enemy(Vector2f(556,76));
@@ -70,28 +66,17 @@ void Juego::cargarPetroleo(){
         sprite_petroleo3->setScale(0.04,0.04);
         sprite_petroleo3->setPosition(759, 62);
 
-<<<<<<< HEAD
-    enemy = new Enemy(Vector2f(400,152));
-
-    enemy2 = new Enemy(Vector2f(556,72));
-=======
 
     enemy = new Enemy(Vector2f(400,152));
 
     enemy2 = new Enemy(Vector2f(556,72));
 
->>>>>>> 8e3d14a043d5ca7fffb4b750af2a078862d0ce22
 
 }
 
 void Juego::cargarCivil(){
-<<<<<<< HEAD
+
     civil = new Civil(Vector2f(386,59));
-=======
-
-    civil = new Civil(Vector2f(50,138));
-
->>>>>>> 8e3d14a043d5ca7fffb4b750af2a078862d0ce22
 }
 void Juego::cargarPlayer(){
 	player = new Player(Vector2f(93, 130));

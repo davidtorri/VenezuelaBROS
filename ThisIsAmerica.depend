@@ -446,7 +446,7 @@
 	<SFML/Graphics.hpp>
 	"Bullet.h"
 
-1555360655 source:/home/jesus/Escritorio/VenezuelaBROS/src/Civil.cpp
+1557322360 source:/home/jesus/Escritorio/VenezuelaBROS/src/Civil.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Civil.h"
@@ -456,7 +456,7 @@
 	<SFML/Graphics.hpp>
 	"Enemy.h"
 
-1557322294 source:/home/jesus/Escritorio/VenezuelaBROS/src/Juego.cpp
+1557322503 source:/home/jesus/Escritorio/VenezuelaBROS/src/Juego.cpp
 	"Juego.h"
 
 1555362599 source:/home/jesus/Escritorio/VenezuelaBROS/src/Player.cpp
