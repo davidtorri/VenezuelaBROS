@@ -27,18 +27,20 @@ class Civil
 
         bool checkCollCivil(Bullet bullet);
 
-
         int getVida();
-    private:
+
+
+        private:
+
         Texture *Tcivil=NULL;
         Sprite *sprite_civil;
-
         IntRect SpriteArrayCivil[6];
+        Clock tmovi;
 
-            int vida;
-            bool izquierda;
-            int posInicial;
-            int SpritevelocidadCivil;
+        int vida;
+        bool izquierda;
+        int posInicial;
+        int SpritevelocidadCivil;
 
 };
 

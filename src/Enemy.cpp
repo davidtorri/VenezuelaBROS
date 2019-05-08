@@ -102,27 +102,30 @@ void Enemy::checkColl(Bullet bullet){
 }
 
 void Enemy::draw(RenderWindow &window){
-
     if(vida > 0)
         window.draw(*sprite_enemy);
 
-        if(Spritevelocidad < 1)
-        {
-        Spritevelocidad = 0;
+        if(Spritevelocidad < 1){
+            Spritevelocidad = 0;
         }
-        Spritevelocidad++;
-        if(izquierda)
-           {
-           mover(-1);
+        if(izquierda){
+            mover(-1);
             sprite_enemy->setTextureRect(SpriteArray[Spritevelocidad%6]);
             sprite_enemy->setScale(-0.7,0.7);
-           }
-        else if(!izquierda)
-            {
-           mover(1);
+             if(tmovi.getElapsedTime().asSeconds()>0.1){
+                Spritevelocidad++;
+                tmovi.restart();
+              }
+        }
+        else if(!izquierda){
+            mover(1);
             sprite_enemy->setTextureRect(SpriteArray[Spritevelocidad%6]);
             sprite_enemy->setScale(0.7,0.7);
-           }
+            if(tmovi.getElapsedTime().asSeconds()>0.1){
+                Spritevelocidad++;
+                tmovi.restart();
+              }
+        }
 
     if(disparado && vida > 0){
         bala->draw(window);

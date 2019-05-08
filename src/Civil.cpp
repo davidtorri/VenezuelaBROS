@@ -16,11 +16,8 @@ Civil::Civil(Vector2f size)
     //Le pongo el centroide donde corresponde
     sprite_civil->setOrigin(75/2,75/2);
     //Cojo el sprite que me interesa por defecto del sheet
-<<<<<<< HEAD
     sprite_civil->setTextureRect(IntRect(0*132, 0*120, 132, 120));
-=======
-    sprite_civil->setTextureRect(IntRect(0*132, 3*120, 132, 120));
->>>>>>> 5370efc025e4a173cbd744f450ff9d91b1bd5c93
+
     sprite_civil->setScale(0.3,0.3);
     // Lo dispongo en el centro de la pantalla
     sprite_civil->setPosition(size);
@@ -97,23 +94,27 @@ void Civil::draw(RenderWindow &window){
     }
     */
 
-        if(SpritevelocidadCivil < 1)
-        {
-        SpritevelocidadCivil = 0;
+        if(SpritevelocidadCivil < 1){
+            SpritevelocidadCivil = 0;
         }
-        SpritevelocidadCivil++;
-        if(izquierda)
-           {
-           moverCivil(-1);
+        if(izquierda){
+            moverCivil(-1);
             sprite_civil->setTextureRect(SpriteArrayCivil[SpritevelocidadCivil%4]);
-           sprite_civil->setScale(-0.3,0.3);
-           }
-        else if(!izquierda)
-            {
-           moverCivil(1);
+            sprite_civil->setScale(-0.3,0.3);
+            if(tmovi.getElapsedTime().asSeconds()>0.1){
+                SpritevelocidadCivil++;
+                tmovi.restart();
+            }
+        }
+        else if(!izquierda){
+            moverCivil(1);
             sprite_civil->setTextureRect(SpriteArrayCivil[SpritevelocidadCivil%4]);
             sprite_civil->setScale(0.3,0.3);
-           }
+            if(tmovi.getElapsedTime().asSeconds()>0.1){
+                SpritevelocidadCivil++;
+                tmovi.restart();
+            }
+        }
     }
 
 }

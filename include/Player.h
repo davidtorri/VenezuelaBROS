@@ -47,6 +47,8 @@ public:
 
     void ReseteaMuro();
 
+    void ReseteaAtaque();
+
     void ResetPosOtan();
 
     void ResetPosBombas();
@@ -67,6 +69,14 @@ public:
 
     void setInterpolando(bool t){interpolando = false;};
 
+    void Ataque();
+
+    bool getAtaque();
+
+    bool getLlamada();
+
+    void setLlamada(bool b);
+
 private:
 
     //Variables de movimiento
@@ -75,6 +85,9 @@ private:
 
     Vector2f pos_anteriorOTAN;
     Vector2f pos_nuevaOTAN;
+
+    sf::Vector2f pos_anteriorBOMBA;
+    sf::Vector2f pos_nuevaBOMBA;
 
     IntRect SpriteRight[6];
     IntRect SpriteLeft[6];
@@ -98,6 +111,9 @@ private:
     Bullet *bala;
     vector<Sprite> bombas;
 
+    Clock tiempoataque;
+    Clock tmovimiento;
+
     int petroleo;
     int vida;
     int velocidad;
@@ -106,9 +122,11 @@ private:
     bool llamada;
     bool disparado;
     bool disparoDerecha;
+    bool atacando;
 
     void moveOtan(Vector2f dir);
     void moveBomba();
+
 
 };
 
