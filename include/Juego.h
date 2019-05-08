@@ -102,6 +102,7 @@ class Juego
         Clock cd;           // Cooldown del muro
         Clock cd2;          // Cooldown de la bala
         Clock cd3;          // Cooldown de la bala del enemigo
+        Clock cdE;
         Clock render_time;  // Reloj que controla la velocidad del render (default 120fps)
         Clock update_time;  // Reloj que controla la velocidad del update (default 15 fps)
 

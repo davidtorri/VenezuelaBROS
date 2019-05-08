@@ -31,7 +31,6 @@ void Juego::cargarCamara(){
 
 void Juego::cargarEnemy(){
 
-
     enemy = new Enemy(Vector2f(400,153));
 
     enemy2 = new Enemy(Vector2f(556,76));
@@ -77,10 +76,8 @@ void Juego::cargarPetroleo(){
 
 void Juego::cargarCivil(){
 
-    civil = new Civil(Vector2f(50,138));
-
+    civil = new Civil(Vector2f(386,59));
 }
-
 void Juego::cargarPlayer(){
 	player = new Player(Vector2f(93, 130));
 }
@@ -137,13 +134,13 @@ void Juego::Update()
     player->setInterpolando(false);
 
 
-
+    /*
     cout << "PlayerX"<< player->getX() << endl;
     cout << "PlayerY"<< player->getY() << endl;
     cout << "Player Vida"<<player->getVida() <<endl;
-
+    */
     if(enemy!=NULL)
-        cout << "Enemy Vida"<< enemy->getVida() <<endl;
+        //cout << "Enemy Vida"<< enemy->getVida() <<endl;
 
 
     //window.setView(camara->returnview());
@@ -153,37 +150,44 @@ void Juego::Update()
         {
             sf::Vector2f vel;
             isMovingDown=true;
-            if(isMovingDown){
-                //vertic = kVel;
-                int gid_pos = map1->getGid(1, player->getY()+(kVel+25), player->getX());
+            if(player->getAtaque()==false){
+                if(isMovingDown){
+                    //vertic = kVel;
+                    int gid_pos = map1->getGid(1, player->getY()+(kVel+25), player->getX());
 
-                if(gid_pos!=14 && gid_pos!=15){
-                    vertic = kVel;
+                    if(gid_pos!=14 && gid_pos!=15){
+                        vertic = kVel;
+                    }
+                }
+                if(isMovingUp){
+                    int gid_pos = map1->getGid(1, player->getY()+(-kVel+25), player->getX());
+
+                    if(gid_pos!=14 && gid_pos!=15){
+                        vertic = -kVel;
+                    }
+                }
+                    //vertic = -kVel;
+                if(isMovingLeft){
+                    int gid_pos = map1->getGid(1, player->getY(), player->getX()+(-kVel-18));
+
+                    if(gid_pos!=14 && gid_pos!=15){
+                        horiz = -kVel;
+                    }
+                }
+
+                if(isMovingRight){
+                    int gid_pos = map1->getGid(1, player->getY(), player->getX()+(+kVel+10));
+
+                    if(gid_pos!=14 && gid_pos!=15){
+                        horiz = kVel;
+                    }
                 }
             }
-            if(isMovingUp){
-                int gid_pos = map1->getGid(1, player->getY()+(-kVel+25), player->getX());
-
-                if(gid_pos!=14 && gid_pos!=15){
-                    vertic = -kVel;
-                }
-            }
-                //vertic = -kVel;
-            if(isMovingLeft){
-                int gid_pos = map1->getGid(1, player->getY(), player->getX()+(-kVel-18));
-
-                if(gid_pos!=14 && gid_pos!=15){
-                    horiz = -kVel;
-                }
+            cout<< "asdfsa: "<< player->getLlamada()<< endl;
+            if(player->getLlamada()==true){
+             player->OTAN();
             }
 
-            if(isMovingRight){
-                int gid_pos = map1->getGid(1, player->getY(), player->getX()+(+kVel+10));
-
-                if(gid_pos!=14 && gid_pos!=15){
-                    horiz = kVel;
-                }
-            }
 
             vel = Vector2f(horiz,vertic);
 
@@ -208,6 +212,10 @@ void Juego::resetHabilidades(){
 
     if(cd2.getElapsedTime().asSeconds()>2){
         player->resetBala();
+    }
+
+    if(cdE.getElapsedTime().asSeconds()>2){
+        player->ReseteaAtaque();
     }
 
     if(cd3.getElapsedTime().asSeconds()>3){
@@ -379,7 +387,7 @@ void Juego::handlePlayerInput(Keyboard::Key key, bool isPressed)
         }
     }
     else if (key == Keyboard::R){
-     player->OTAN();
+    player->setLlamada(true);
     }
     else if (key == Keyboard::Space){
     isFiring=true;
@@ -388,6 +396,11 @@ void Juego::handlePlayerInput(Keyboard::Key key, bool isPressed)
     else if (key == Keyboard::Q){
      player->Muro(derecha);
      cd.restart();
+    }
+
+     else if (key == Keyboard::E){
+     player->Ataque();
+     cdE.restart();
     }
 
 	else if (key == Keyboard::X && isPressed){

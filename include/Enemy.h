@@ -45,6 +45,8 @@ private:
 
     Bullet *bala;
 
+    Clock tmovi;
+
     int Spritevelocidad;
     int vida;
     bool disparado;
