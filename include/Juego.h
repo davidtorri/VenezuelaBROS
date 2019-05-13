@@ -11,6 +11,7 @@
 #include "Juego.h"
 #include "Camara.h"
 #include "Civil.h"
+#include "Maduro.h"
 
 using namespace std;
 using namespace sf;
@@ -42,6 +43,7 @@ class Juego
         void cargarEnemy();
         void cargarCivil();
         void cargarMapa();
+        void cargarMaduro();
         void cargarPetroleo();
 
         void bucleJuego();
@@ -69,11 +71,12 @@ class Juego
         void enemigoDisparaYComprueboColisiones();
         void resetHabilidades();
 
-        Player* player; // Juego principal
-        Enemy* enemy;   // Enemigo principal
-        Enemy* enemy2;  // Enemigo dos
-        Civil* civil;   // Personaje NPC del juego
-        Tilemap* map1;  // Mapa del juego
+        Player* player;     // Juego principal
+        Enemy* enemy;       // Enemigo principal
+        Enemy* enemy2;      // Enemigo dos
+        Civil* civil;       // Personaje NPC del juego
+        Tilemap* map1;      // Mapa del juego
+        Maduro* bossFinal;  // JefeFinal
 
         Texture *Tpetroleo;
         Sprite *sprite_petroleo;

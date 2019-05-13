@@ -46,6 +46,7 @@
 		<Unit filename="include/Civil.h" />
 		<Unit filename="include/Enemy.h" />
 		<Unit filename="include/Juego.h" />
+		<Unit filename="include/Maduro.h" />
 		<Unit filename="include/Player.h" />
 		<Unit filename="include/Tilemap.h" />
 		<Unit filename="include/tinyxml2.h" />
@@ -54,6 +55,7 @@
 		<Unit filename="src/Civil.cpp" />
 		<Unit filename="src/Enemy.cpp" />
 		<Unit filename="src/Juego.cpp" />
+		<Unit filename="src/Maduro.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Tilemap.cpp" />
 		<Unit filename="src/tinyxml2.cpp" />

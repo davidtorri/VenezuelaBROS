@@ -16,6 +16,7 @@ int main()
     juego->cargarCivil();
     juego->cargarPetroleo();
     juego->cargarCamara();
+    juego->cargarMaduro();
     juego->bucleJuego();
 
     return 0;

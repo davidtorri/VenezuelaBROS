@@ -37,6 +37,12 @@ void Juego::cargarEnemy(){
 
 }
 
+void Juego::cargarMaduro(){
+
+    bossFinal = new Maduro(Vector2f(700,153));
+
+}
+
 void Juego::cargarPetroleo(){
 
         p1 = true;
@@ -76,7 +82,7 @@ void Juego::cargarPetroleo(){
 
 void Juego::cargarCivil(){
 
-    civil = new Civil(Vector2f(386,59));
+    civil = new Civil(Vector2f(200,90));
 }
 void Juego::cargarPlayer(){
 	player = new Player(Vector2f(93, 130));
@@ -327,8 +333,11 @@ void Juego::Render(float tiempo_fraccion)
 
     if(enemy2!=NULL)
         enemy2->draw(window);
+    if(bossFinal!=NULL)
+        bossFinal->draw(window);
 
-    civil->draw(window);
+    if(civil!=NULL)
+        civil->draw(window);
 
     if(p1)
         window.draw(*sprite_petroleo);
