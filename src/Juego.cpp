@@ -39,7 +39,7 @@ void Juego::cargarEnemy(){
 
 void Juego::cargarMaduro(){
 
-    bossFinal = new Maduro(Vector2f(700,153));
+    bossFinal = new Maduro(Vector2f(200,90));
 
 }
 

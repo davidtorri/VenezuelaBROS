@@ -102,7 +102,6 @@ bool Enemy::checkColl(Bullet bullet){
             std::cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << std::endl;
             vida = vida - bullet.getDmg();
             cout<<"Vida enemigo: "<<vida<<endl;
-            bullet.desactiva();
             return true;
             //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
         }

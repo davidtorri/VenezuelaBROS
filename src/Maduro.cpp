@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Maduro.h"
 
-#define kVida 3000
+#define kVida 300
 
 Maduro::Maduro(Vector2f size) {
 
@@ -12,7 +12,7 @@ Maduro::Maduro(Vector2f size) {
 
     Tmaduro= new Texture();
 
-    Tmaduro->loadFromFile("resources/soldier.png");
+    Tmaduro->loadFromFile("resources/maduro1.png");
     sprite_maduro = new Sprite(*Tmaduro);
 
     bala = new Bullet(Vector2f(50,50),1);
@@ -21,14 +21,14 @@ Maduro::Maduro(Vector2f size) {
     //Le pongo el centroide donde corresponde
     sprite_maduro->setOrigin(75/2,75/2);
     //Cojo el sprite que me interesa por defecto del sheet
-    sprite_maduro->setTextureRect(IntRect(1*45, 3*50, 45, 50));
+    sprite_maduro->setTextureRect(IntRect(1, 1, 45, 50));
     sprite_maduro->setScale(0.75,0.75);
     // Lo dispongo en el centro de la pantalla
     sprite_maduro->setPosition(size);
 
     bool izquierda = true;
 
-    int Spritevelocidad = 0;
+    //int Spritevelocidad = 0;
     for(int i = 0; i < 6; i ++){
         SpriteArray[i] = IntRect(i*45, 3*50, 45, 50);
     }
