@@ -15,6 +15,12 @@ public:
 
     void fire(int speed);
 
+    void activaBala();
+
+    void desactiva();
+
+    bool getActivada();
+
     int getRight();
 
     int getLeft();
@@ -37,6 +43,11 @@ private:
     Sprite *sprite_bullet;
 
     int dmg;
+
+    //si la bala esta activada entonces actualizaremos su posiciones
+    //si la bala no esta activada pondermos su setPos a 0,0
+    //con esto controlamos las colisiones, lo ideal seria gestinoar bien el  borrado de los punteeros y sprites
+    bool activada;
 
 
 };

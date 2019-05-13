@@ -189,7 +189,7 @@ void Juego::Update()
                     }
                 }
             }
-            cout<< "asdfsa: "<< player->getLlamada()<< endl;
+
             if(player->getLlamada()==true){
              player->OTAN();
             }
@@ -203,9 +203,9 @@ void Juego::Update()
 
 	firstTime=false;
 
-    resetHabilidades();
+	enemigoDisparaYComprueboColisiones();
 
-    enemigoDisparaYComprueboColisiones();
+    resetHabilidades();
 
     comprueboMuertes();
 }
@@ -243,8 +243,10 @@ void Juego::enemigoDisparaYComprueboColisiones(){
     if(enemy!=NULL){
         if(enemy->getX() - player->getX() < 150)
             enemy->dispara();
-        if(player->getBalaActivada())
-            enemy->checkColl(player->getBala());
+        if(player->getBalaActivada()){
+            if(enemy->checkColl(player->getBala()))
+                isFiring = false;
+        }
         //if(){
             if(player->checkColl(enemy->getBala())){
                 enemy->resetBala();
@@ -257,8 +259,10 @@ void Juego::enemigoDisparaYComprueboColisiones(){
             enemy2->dispara();
         if(enemy2->getX() - civil->getX() < 150)
             enemy2->dispara();
-        if(player->getBalaActivada())
-            enemy2->checkColl(player->getBala());
+        if(player->getBalaActivada()){
+            if(enemy2->checkColl(player->getBala()))
+                isFiring = false;
+        }
         if(player->checkColl(enemy2->getBala()))
             enemy2->resetBala();
     }

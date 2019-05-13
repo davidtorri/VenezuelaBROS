@@ -26,7 +26,7 @@ public:
 
     int getY();
 
-    void checkColl(Bullet bullet);
+    bool checkColl(Bullet bullet);
 
     void draw(RenderWindow &window);
 

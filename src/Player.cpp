@@ -251,6 +251,7 @@ void Player::CalcularSprite(){
 void Player::dispara(bool derecha){
     if(!disparado)
     {
+        bala->activaBala();
         bala->setPos(sprite_player->getPosition());
         disparado = true;
         disparoDerecha = derecha;
@@ -350,6 +351,7 @@ bool Player::checkColl(Bullet bullet){
 
         if(sprite_player->getGlobalBounds().intersects(posicion)){
             cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << endl;
+            cout <<" Vida player:"<<vida<<endl;
             vida = vida - bullet.getDmg();
             return true;
             //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
@@ -375,6 +377,7 @@ bool Player::checkCollPetroleo(Sprite pet){
 
 void Player::resetBala(){
     disparado = false;
+    bala->desactiva();
 
 }
 

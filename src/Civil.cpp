@@ -123,7 +123,7 @@ void Civil::draw(RenderWindow &window){
     else{
         //disponemos el sprite fuera de pantalla para que no nos moleste,
         //esto deberia hacerlo el delete borrando el sprite directamente pero no lo contemplamos
-        sprite_civil->setPosition(0,0);
+        sprite_civil->setPosition(-100000,0);
     }
 
 }

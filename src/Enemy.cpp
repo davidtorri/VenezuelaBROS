@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Enemy.h"
 
-#define kVida 30
+#define kVida 60
 
 Enemy::Enemy(Vector2f size) {
 
@@ -80,6 +80,7 @@ void Enemy::setPos(Vector2f newPos){
 
 void Enemy::resetBala(){
     disparado = false;
+    bala->desactiva();
 }
 
 void Enemy::dispara(){
@@ -87,24 +88,32 @@ void Enemy::dispara(){
     {
         int posXEnemigo = getX();
         int posYEnemigo = getY()-15;
+        bala->activaBala();
         bala->setPos(sf::Vector2f(posXEnemigo,posYEnemigo));
         disparado = true;
     }
 }
 
-void Enemy::checkColl(Bullet bullet){
+bool Enemy::checkColl(Bullet bullet){
 
         sf::FloatRect posicion(bullet.getPositionSprite(),{32,32});
 
         if(sprite_enemy->getGlobalBounds().intersects(posicion)){
             std::cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << std::endl;
             vida = vida - bullet.getDmg();
+            cout<<"Vida enemigo: "<<vida<<endl;
+            bullet.desactiva();
+            return true;
             //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
+        }
+        else
+        {
+            return false;
         }
 }
 
 void Enemy::draw(RenderWindow &window){
-    if(vida > 0)
+    if(vida > 0){
         window.draw(*sprite_enemy);
 
         if(Spritevelocidad < 1){
@@ -133,5 +142,8 @@ void Enemy::draw(RenderWindow &window){
         bala->draw(window);
         bala->fire(-4);
     }
+    }
+    else
+        sprite_enemy->setPosition(-1000,0);
 }
 

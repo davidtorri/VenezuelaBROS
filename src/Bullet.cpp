@@ -5,6 +5,7 @@
 Bullet::Bullet(Vector2f size,int tipo){
 
     Tbullet= new Texture();
+    activada = false;
 
     //Es una bala del player
     if(tipo == 0){
@@ -43,6 +44,23 @@ Bullet::~Bullet() {
     Tbullet = NULL;*/
 }
 
+void Bullet::activaBala()
+{
+    activada = true;
+}
+
+void Bullet::desactiva()
+{
+    activada = false;
+    sprite_bullet->setPosition(0,-1000);
+
+}
+
+bool Bullet::getActivada()
+{
+    return activada;
+}
+
 void Bullet::fire(int speed){
     sprite_bullet->move(speed, 0);
 }
@@ -74,7 +92,9 @@ const Vector2f Bullet::getPositionSprite(){
 
 void Bullet::draw(RenderWindow &window){
     if(sprite_bullet!=NULL)
+    {
         window.draw(*sprite_bullet);
+    }
 }
 
 void Bullet::setPos(Vector2f newPos){
