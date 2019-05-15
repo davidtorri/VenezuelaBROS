@@ -19,10 +19,10 @@ Maduro::Maduro(Vector2f size) {
 
 
     //Le pongo el centroide donde corresponde
-    sprite_maduro->setOrigin(75/2,75/2);
+    sprite_maduro->setOrigin(512/2,512/2);
     //Cojo el sprite que me interesa por defecto del sheet
-    sprite_maduro->setTextureRect(IntRect(1, 1, 45, 50));
-    sprite_maduro->setScale(0.75,0.75);
+    sprite_maduro->setTextureRect(IntRect(45, 50, 512, 512));
+    sprite_maduro->setScale(0.2,0.2);
     // Lo dispongo en el centro de la pantalla
     sprite_maduro->setPosition(size);
 
@@ -30,7 +30,7 @@ Maduro::Maduro(Vector2f size) {
 
     //int Spritevelocidad = 0;
     for(int i = 0; i < 6; i ++){
-        SpriteArray[i] = IntRect(i*45, 3*50, 45, 50);
+        SpriteArray[i] = IntRect(45, 50, 512, 512);
     }
 
     //debe ser la misma coordenada X en la que se genera el enemigo
@@ -112,7 +112,7 @@ void Maduro::draw(RenderWindow &window){
         if(izquierda){
             mover(-1);
             sprite_maduro->setTextureRect(SpriteArray[Spritevelocidad%6]);
-            sprite_maduro->setScale(-0.7,0.7);
+            sprite_maduro->setScale(-0.2,0.2);
              if(tmovi.getElapsedTime().asSeconds()>0.1){
                 Spritevelocidad++;
                 tmovi.restart();
@@ -121,7 +121,7 @@ void Maduro::draw(RenderWindow &window){
         else if(!izquierda){
             mover(1);
             sprite_maduro->setTextureRect(SpriteArray[Spritevelocidad%6]);
-            sprite_maduro->setScale(0.7,0.7);
+            sprite_maduro->setScale(0.2,0.2);
             if(tmovi.getElapsedTime().asSeconds()>0.1){
                 Spritevelocidad++;
                 tmovi.restart();

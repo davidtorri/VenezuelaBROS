@@ -31,15 +31,18 @@ void Juego::cargarCamara(){
 
 void Juego::cargarEnemy(){
 
-    enemy = new Enemy(Vector2f(400,153));
+    //enemy = new Enemy(Vector2f(400,153));
+    enemy = new Enemy(Vector2f(0,-1000));
 
-    enemy2 = new Enemy(Vector2f(556,76));
+    //enemy2 = new Enemy(Vector2f(556,76));
+    enemy2 = new Enemy(Vector2f(0,-1000));
+
 
 }
 
 void Juego::cargarMaduro(){
 
-    bossFinal = new Maduro(Vector2f(200,90));
+    bossFinal = new Maduro(Vector2f(400,123));
 
 }
 
@@ -71,11 +74,6 @@ void Juego::cargarPetroleo(){
         sprite_petroleo3->setOrigin(130/2,40/2);
         sprite_petroleo3->setScale(0.04,0.04);
         sprite_petroleo3->setPosition(759, 62);
-
-
-    enemy = new Enemy(Vector2f(400,152));
-
-    enemy2 = new Enemy(Vector2f(556,72));
 
 
 }
