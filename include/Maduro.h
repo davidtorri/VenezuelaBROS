@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Bullet.h"
-
+#include "Player.h"
 using namespace std;
 using namespace sf;
 
@@ -20,6 +20,8 @@ public:
 
     void mover(int speed);
 
+    bool activado(Player &player);
+
     Bullet getBala();
 
     int getX();
@@ -29,6 +31,8 @@ public:
     void checkColl(Bullet bullet);
 
     void draw(RenderWindow &window);
+
+    void expropiese(Player &player);
 
     int getVida();
 
@@ -47,11 +51,16 @@ private:
 
     Clock tmovi;
 
+    Clock cd;
+
     int Spritevelocidad;
     int vida;
     bool disparado;
     bool izquierda;
     int posInicial;
+    bool Activado;
+    int posXTrump;
+    int posYTrump;
 
 };
 

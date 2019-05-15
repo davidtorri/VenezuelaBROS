@@ -20,7 +20,7 @@
 
 1555344208 D
 
-1557782286 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
+1557923250 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
 	"Juego.h"
 
 1557314198 d14a043d5ca7fffb4b750af2a078862d0ce22
@@ -480,13 +480,14 @@
 	<cstddef>
 	<cstdarg>
 
-1557781636 source:/home/jaime/git_workspace/VenezuelaBROS/src/Maduro.cpp
+1557922568 source:/home/jaime/git_workspace/VenezuelaBROS/src/Maduro.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Maduro.h"
 
-1557775752 /home/jaime/git_workspace/VenezuelaBROS/include/Maduro.h
+1557923274 /home/jaime/git_workspace/VenezuelaBROS/include/Maduro.h
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Bullet.h"
+	"Player.h"
 

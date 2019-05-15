@@ -42,7 +42,7 @@ void Juego::cargarEnemy(){
 
 void Juego::cargarMaduro(){
 
-    bossFinal = new Maduro(Vector2f(400,123));
+    bossFinal = new Maduro(Vector2f(500,123));
 
 }
 
@@ -138,11 +138,13 @@ void Juego::Update()
     player->setInterpolando(false);
 
 
-    /*
+
     cout << "PlayerX"<< player->getX() << endl;
-    cout << "PlayerY"<< player->getY() << endl;
+    cout << "MaduroX"<< bossFinal->getX() << endl;
     cout << "Player Vida"<<player->getVida() <<endl;
-    */
+
+
+
     if(enemy!=NULL)
         //cout << "Enemy Vida"<< enemy->getVida() <<endl;
 
@@ -292,6 +294,12 @@ void Juego::enemigoDisparaYComprueboColisiones(){
     if(player->checkCollPetroleo(*sprite_petroleo3)){
         player->setPetroleo();
         p4 = false;
+    }
+
+    if(bossFinal->activado(*player))
+    {
+        bossFinal->expropiese(*player);
+
     }
 
 }

@@ -12,6 +12,8 @@ Maduro::Maduro(Vector2f size) {
 
     Tmaduro= new Texture();
 
+    Activado = false;
+
     Tmaduro->loadFromFile("resources/maduro1.png");
     sprite_maduro = new Sprite(*Tmaduro);
 
@@ -49,12 +51,62 @@ Maduro::~Maduro() {
 
 void Maduro::mover(int speed){
 
-    sprite_maduro->move(speed, 0);
+    //mientras no este activado no se movera, seactivara cuando ve al player a cierta distancia
+    if(!Activado)
+    {
+        sprite_maduro->move(0,0);
+    }
+    else
+    {
 
-    if(getX() == posInicial-40)
-        izquierda = false;
-    else if(getX()== posInicial +40)
-        izquierda = true;
+        if(posXTrump < getX())
+        {
+            sprite_maduro->move(speed,0);
+        }
+        else if(posXTrump > getX())
+        {
+            sprite_maduro->move(-speed,0);
+        }
+    }
+}
+
+//activamos el bossfinal si esta cerca del player o si el palyer ha pasado de largo
+bool Maduro::activado(Player &trump)
+{
+    if(!Activado)
+    {
+        int posX = trump.getX();
+        int posY = trump.getY();
+
+        if(((getX()-posX) < 200) || posX > getX())
+        {
+            Activado = true;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return true;
+    }
+}
+
+void Maduro::expropiese(Player &trump)
+{
+    posXTrump = trump.getX();
+    posYTrump = trump.getY();
+
+    dispara();
+
+    if(cd.getElapsedTime().asSeconds() > 1)
+    {
+        resetBala();
+        cd.restart();
+        Tmaduro->loadFromFile("resources/maduro2.png");
+    }
 }
 
 Bullet Maduro::getBala(){
@@ -88,6 +140,7 @@ void Maduro::dispara(){
         int posYEnemigo = getY()-15;
         bala->setPos(sf::Vector2f(posXEnemigo,posYEnemigo));
         disparado = true;
+        //Tmaduro->loadFromFile("resources/maduro2.png");
     }
 }
 
@@ -129,7 +182,16 @@ void Maduro::draw(RenderWindow &window){
         }
 
     if(disparado && vida > 0){
+
+
+        if(posXTrump < getX())
+        {
+             bala->fire(-4);
+        }
+        else if(posXTrump > getX())
+        {
+             bala->fire(4);
+        }
         bala->draw(window);
-        bala->fire(-4);
     }
 }
