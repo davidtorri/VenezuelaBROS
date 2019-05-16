@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <stdlib.h>
+#include <time.h>
 
 #include "Bullet.h"
 #include "Player.h"
@@ -28,7 +30,7 @@ public:
 
     int getY();
 
-    void checkColl(Bullet bullet);
+    bool checkColl(Bullet bullet);
 
     void draw(RenderWindow &window);
 
@@ -57,6 +59,7 @@ private:
     int vida;
     bool disparado;
     bool izquierda;
+    bool aturdido;
     int posInicial;
     bool Activado;
     int posXTrump;

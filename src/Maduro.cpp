@@ -6,7 +6,12 @@
 
 Maduro::Maduro(Vector2f size) {
 
+    //para el disparo aleatorio
+    srand(time(NULL));
+
     vida = kVida;
+
+    aturdido = false;
 
     disparado = false;
 
@@ -105,7 +110,7 @@ void Maduro::expropiese(Player &trump)
     {
         resetBala();
         cd.restart();
-        Tmaduro->loadFromFile("resources/maduro2.png");
+        //Tmaduro->loadFromFile("resources/maduro2.png");
     }
 }
 
@@ -136,22 +141,33 @@ void Maduro::resetBala(){
 void Maduro::dispara(){
     if(!disparado)
     {
-        int posXEnemigo = getX();
-        int posYEnemigo = getY()-15;
-        bala->setPos(sf::Vector2f(posXEnemigo,posYEnemigo));
+        //queremos que lleguen aqui
+        int posXEnemigo = posXTrump;
+        int posYEnemigo = posYTrump;
+
+        //sale de aqui
+        bala->setPos(sf::Vector2f(getX(),posYEnemigo));
+
         disparado = true;
         //Tmaduro->loadFromFile("resources/maduro2.png");
     }
 }
 
-void Maduro::checkColl(Bullet bullet){
+bool Maduro::checkColl(Bullet bullet){
 
         sf::FloatRect posicion(bullet.getPositionSprite(),{32,32});
 
         if(sprite_maduro->getGlobalBounds().intersects(posicion)){
             std::cout << "Colisionnnnnnnnnnnnnnnnnnnnnnnn" << std::endl;
+            cout << "Vida maduro" << vida << endl;
             vida = vida - bullet.getDmg();
+            aturdido = true;
+            return true;
             //sprite_enemy->setPosition(sf::Vector2f(423442, 4234423));
+        }
+        else
+        {
+            return false;
         }
 }
 

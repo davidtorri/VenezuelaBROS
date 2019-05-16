@@ -299,6 +299,10 @@ void Juego::enemigoDisparaYComprueboColisiones(){
     if(bossFinal->activado(*player))
     {
         bossFinal->expropiese(*player);
+        if(bossFinal->checkColl(player->getBala()))
+            player->resetBala();
+        if(player->checkColl(bossFinal->getBala()))
+            bossFinal->resetBala();
 
     }
 

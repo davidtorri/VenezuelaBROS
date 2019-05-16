@@ -1,26 +1,26 @@
 # depslib dependency file v1.0
-1557779317 source:/home/jaime/git_workspace/VenezuelaBROS/src/Bullet.cpp
+1558032522 source:/home/jaime/git_workspace/VenezuelaBROS/src/Bullet.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Bullet.h"
 
-1557777636 /home/jaime/git_workspace/VenezuelaBROS/include/Bullet.h
+1558032534 /home/jaime/git_workspace/VenezuelaBROS/include/Bullet.h
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1557780693 source:/home/jaime/git_workspace/VenezuelaBROS/src/Enemy.cpp
+1558027176 source:/home/jaime/git_workspace/VenezuelaBROS/src/Enemy.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Enemy.h"
 
-1557778983 /home/jaime/git_workspace/VenezuelaBROS/include/Enemy.h
+1558027176 /home/jaime/git_workspace/VenezuelaBROS/include/Enemy.h
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Bullet.h"
 
 1555344208 D
 
-1557923250 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
+1558033480 source:/home/jaime/git_workspace/VenezuelaBROS/src/Juego.cpp
 	"Juego.h"
 
 1557314198 d14a043d5ca7fffb4b750af2a078862d0ce22
@@ -29,7 +29,7 @@
 	<SFML/Graphics.hpp>
 	"Civil.h"
 
-1557776172 /home/jaime/git_workspace/VenezuelaBROS/include/Juego.h
+1558027176 /home/jaime/git_workspace/VenezuelaBROS/include/Juego.h
 	<sstream>
 	<iostream>
 	<SFML/Graphics.hpp>
@@ -42,13 +42,13 @@
 	"Civil.h"
 	"Maduro.h"
 
-1555086138 /home/jaime/git_workspace/VenezuelaBROS/include/Tilemap.h
+1558027176 /home/jaime/git_workspace/VenezuelaBROS/include/Tilemap.h
 	<sstream>
 	<iostream>
 	<SFML/Graphics.hpp>
 	"tinyxml2.h"
 
-1555084934 /home/jaime/git_workspace/VenezuelaBROS/include/tinyxml2.h
+1558027176 /home/jaime/git_workspace/VenezuelaBROS/include/tinyxml2.h
 	<ctype.h>
 	<limits.h>
 	<stdio.h>
@@ -64,25 +64,25 @@
 	<android/log.h>
 	<assert.h>
 
-1557315530 /home/jaime/git_workspace/VenezuelaBROS/include/Player.h
+1558027176 /home/jaime/git_workspace/VenezuelaBROS/include/Player.h
 	<iostream>
 	<stdlib.h>
 	<SFML/Graphics.hpp>
 	"Bullet.h"
 
-1555084934 /home/jaime/git_workspace/VenezuelaBROS/include/Camara.h
+1558027176 /home/jaime/git_workspace/VenezuelaBROS/include/Camara.h
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1557779269 source:/home/jaime/git_workspace/VenezuelaBROS/src/Player.cpp
+1558027176 source:/home/jaime/git_workspace/VenezuelaBROS/src/Player.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Player.h"
 
-1555086232 source:/home/jaime/git_workspace/VenezuelaBROS/src/Tilemap.cpp
+1558027176 source:/home/jaime/git_workspace/VenezuelaBROS/src/Tilemap.cpp
 	"Tilemap.h"
 
-1555084934 source:/home/jaime/git_workspace/VenezuelaBROS/src/tinyxml2.cpp
+1558027176 source:/home/jaime/git_workspace/VenezuelaBROS/src/tinyxml2.cpp
 	"tinyxml2.h"
 	<new>
 	<stddef.h>
@@ -90,15 +90,15 @@
 	<cstddef>
 	<cstdarg>
 
-1557776021 source:/home/jaime/git_workspace/VenezuelaBROS/main.cpp
+1558027176 source:/home/jaime/git_workspace/VenezuelaBROS/main.cpp
 	"Juego.h"
 
-1557318838 /home/jaime/git_workspace/VenezuelaBROS/include/Civil.h
+1558027176 /home/jaime/git_workspace/VenezuelaBROS/include/Civil.h
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Bullet.h"
 
-1557777966 source:/home/jaime/git_workspace/VenezuelaBROS/src/Civil.cpp
+1558027176 source:/home/jaime/git_workspace/VenezuelaBROS/src/Civil.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Civil.h"
@@ -480,14 +480,16 @@
 	<cstddef>
 	<cstdarg>
 
-1557922568 source:/home/jaime/git_workspace/VenezuelaBROS/src/Maduro.cpp
+1558033289 source:/home/jaime/git_workspace/VenezuelaBROS/src/Maduro.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Maduro.h"
 
-1557923274 /home/jaime/git_workspace/VenezuelaBROS/include/Maduro.h
+1558033299 /home/jaime/git_workspace/VenezuelaBROS/include/Maduro.h
 	<iostream>
 	<SFML/Graphics.hpp>
+	<stdlib.h>
+	<time.h>
 	"Bullet.h"
 	"Player.h"
 
